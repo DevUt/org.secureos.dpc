@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FirstTestDPM</string>
+    <string name="disable_switch">Disable</string>
+    <string name="manage_packages">Manage Packages</string>
 </resources>
