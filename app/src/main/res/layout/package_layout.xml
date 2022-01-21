@@ -6,7 +6,7 @@
     android:id="@+id/package_refresh_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".packagemanager.PackageActivity">
+    tools:context=".packageManager.PackageActivity">
 
 
     <androidx.recyclerview.widget.RecyclerView

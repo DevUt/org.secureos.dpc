@@ -1,4 +1,4 @@
-package com.utkarsh.firsttestdpm.packagemanager
+package com.utkarsh.firsttestdpm.packageManager
 
 import android.app.admin.DevicePolicyManager
 import android.content.ComponentName

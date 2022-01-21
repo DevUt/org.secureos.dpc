@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import com.utkarsh.firsttestdpm.packagemanager.PackageActivity
+import com.utkarsh.firsttestdpm.packageManager.PackageActivity
 
 
 class MainActivity : AppCompatActivity() {
