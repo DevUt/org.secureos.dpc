@@ -17,17 +17,18 @@
         android:testOnly="false"
         android:theme="@style/Theme.FirstTestDPM">
         <activity
+            android:name=".packageManagement.PackageActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".packageManager.PackageActivity"
-            android:parentActivityName=".MainActivity" />
-
         <receiver
             android:name=".deviceAdmin.DeviceAdmin"
             android:exported="false"
@@ -36,6 +37,7 @@
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin" />
