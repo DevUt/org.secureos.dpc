@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name=".packageManager.PackageActivity"
-            android:exported="true" />
+            android:parentActivityName=".MainActivity" />
 
         <receiver
             android:name=".deviceAdmin.DeviceAdmin"
