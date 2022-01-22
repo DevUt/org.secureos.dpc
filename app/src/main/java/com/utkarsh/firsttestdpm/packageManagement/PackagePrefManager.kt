@@ -17,12 +17,14 @@ class PackagePrefManager(context: Context){
     private var packageFlowRead : Flow<Preferences> = context.packageData.data
     private var packageFlowWrite = context.packageData
     suspend fun readEnabled(packageName : String) : Int?{
+        Log.i("PackageItem", "entered readEnabled")
         val packageKey = intPreferencesKey(packageName)
         var retval : Int = 0
-        packageFlowRead.map {
-            preferences ->
-                 retval = preferences[packageKey] ?: 0
+        packageFlowWrite.edit {
+            pref ->
+                retval = pref[packageKey] ?: 0
         }
+        Log.i("PackageItem", "in readEnabled " + retval.toString() + " "+ packageName.toString())
         return retval
     }
     // 0-> not set 1-> enabled 2-> disabled
@@ -31,7 +33,7 @@ class PackagePrefManager(context: Context){
         packageFlowWrite.edit {
             pref->
                 pref[packageKey] = enabled
-            Log.i("PackagePref",packageName + " " + pref[packageKey].toString() + " Intended : " + enabled.toString())
+            Log.i("PackageItem",packageName + " " + pref[packageKey].toString() + " Intended : " + enabled.toString())
         }
     }
 }

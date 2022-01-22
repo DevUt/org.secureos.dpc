@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,11 +44,18 @@ class ItemAdapter(
         holder.packageIcon.setImageDrawable(item.loadIcon(pm))
         // 0-> not set 1-> enabled 2-> disabled
         runBlocking{
-            if(packagePref.readEnabled(item.packageName) == 2){
+            val itemRead = packagePref.readEnabled(item.packageName)
+            if(itemRead != null)
+                Log.i("PackageItem",item.packageName +" " + itemRead.toString())
+            if(itemRead==0 || itemRead == null){
+                holder.disableSwitch.isChecked = item.enabled
+                holder.disableSwitch.setBackgroundColor(Color.CYAN)
+            }else if(itemRead == 1){
+                holder.disableSwitch.setBackgroundColor(Color.CYAN)
+                holder.disableSwitch.isChecked = true
+            }else{
                 holder.disableSwitch.setBackgroundColor(Color.YELLOW)
                 holder.disableSwitch.isChecked = false
-            }else{
-                holder.disableSwitch.isChecked = true
             }
         }
         // 0-> not set 1-> enabled 2-> disabled
@@ -55,6 +63,7 @@ class ItemAdapter(
             runBlocking {
                 if(holder.disableSwitch.isChecked){
                     packagePref.writeEnabled(item.packageName,1)
+                    holder.disableSwitch.setBackgroundColor(Color.CYAN)
                 }else{
                     packagePref.writeEnabled(item.packageName,2)
                     holder.disableSwitch.setBackgroundColor(Color.YELLOW)
