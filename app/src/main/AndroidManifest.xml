@@ -17,9 +17,12 @@
         android:testOnly="false"
         android:theme="@style/Theme.FirstTestDPM">
         <activity
-            android:name=".packageManagement.PackageActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".policyEnforcer.PolicyEnforcer"
             android:exported="false" />
+        <activity
+            android:name=".packageManagement.PackageActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -29,6 +32,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <receiver
             android:name=".deviceAdmin.DeviceAdmin"
             android:exported="false"
