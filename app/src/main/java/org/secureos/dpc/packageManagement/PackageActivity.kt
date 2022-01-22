@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
-import com.utkarsh.firsttestdpm.R
+import org.secureos.dpc.R
 
 class PackageActivity : AppCompatActivity() {
     companion object {

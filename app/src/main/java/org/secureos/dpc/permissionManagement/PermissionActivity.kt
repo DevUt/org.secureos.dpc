@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.utkarsh.firsttestdpm.R
+import org.secureos.dpc.R
 
 class PermissionActivity: AppCompatActivity(){
     companion object {

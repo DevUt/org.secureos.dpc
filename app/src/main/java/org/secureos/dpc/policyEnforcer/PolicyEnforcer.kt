@@ -6,13 +6,14 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
-import com.utkarsh.firsttestdpm.R
 import org.secureos.dpc.deviceAdmin.DeviceAdmin
 import org.secureos.dpc.packageManagement.PackagePrefManager
 import org.secureos.dpc.permissionManagement.PermissionData
 import org.secureos.dpc.permissionManagement.PermissionPrefManager
 import kotlinx.coroutines.runBlocking
+import org.secureos.dpc.R
 
 class PolicyEnforcer : AppCompatActivity() {
     private val cn = ComponentName(this, DeviceAdmin::class.java)
@@ -40,6 +41,7 @@ class PolicyEnforcer : AppCompatActivity() {
             runBlocking {
                 if(packageRead.readEnabled(app.packageName) == 2){
                     dpm.setApplicationHidden(cn,app.packageName,true)
+                    Log.i("PolicyEnforcer","Hidden " + app.packageName)
                 }
             }
         }

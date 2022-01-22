@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.switchmaterial.SwitchMaterial
-import com.utkarsh.firsttestdpm.R
 import kotlinx.coroutines.runBlocking
+import org.secureos.dpc.R
 
 class ItemAdapter(
     private val context: Context,

@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import com.utkarsh.firsttestdpm.R
+import org.secureos.dpc.R
 import org.secureos.dpc.packageManagement.PackageActivity
 import org.secureos.dpc.permissionManagement.PermissionActivity
 
