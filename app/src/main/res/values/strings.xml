@@ -2,4 +2,6 @@
     <string name="app_name">FirstTestDPM</string>
     <string name="disable_switch">Disable</string>
     <string name="manage_packages">Manage Packages</string>
+    <string name="manage_permissions">Manage Permissions</string>
+    <string name="todo">TODO</string>
 </resources>

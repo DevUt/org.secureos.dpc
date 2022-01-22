@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import com.utkarsh.firsttestdpm.packageManagement.PackageActivity
+import com.utkarsh.firsttestdpm.permissionManagement.PermissionActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,11 +17,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Log.d(TAG,"onCreate()")
-        val packagePage : Button = findViewById(R.id.go_to_package_page)
+        Log.d(TAG, "onCreate()")
+        val packagePage: Button = findViewById(R.id.go_to_package_page)
         packagePage.setOnClickListener {
-            val packageIntent = Intent(this,PackageActivity::class.java)
+            val packageIntent = Intent(this, PackageActivity::class.java)
             this.startActivity(packageIntent)
+
+            val permissionPage: Button = findViewById(R.id.go_to_permission_page)
+            permissionPage.setOnClickListener {
+                val permissionIntent = Intent(this, PermissionActivity::class.java)
+                this.startActivity(permissionIntent)
+            }
         }
     }
 }
+
+
+
