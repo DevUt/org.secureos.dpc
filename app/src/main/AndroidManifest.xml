@@ -17,20 +17,20 @@
         android:testOnly="false"
         android:theme="@style/Theme.FirstTestDPM">
         <activity
-            android:name=".permissionManagement.PermissionActivity"
+            android:name="org.secureos.dpc.permissionManagement.PermissionActivity"
             android:exported="false" />
         <activity
-            android:name=".policyEnforcer.PolicyEnforcer"
+            android:name="org.secureos.dpc.policyEnforcer.PolicyEnforcer"
             android:exported="false" />
         <activity
-            android:name=".packageManagement.PackageActivity"
+            android:name="org.secureos.dpc.packageManagement.PackageActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" /> <!-- <activity -->
+            android:parentActivityName="org.secureos.dpc.MainActivity" /> <!-- <activity -->
         <!-- android:name=".permissionManagement.PermissionActivity" -->
         <!-- android:exported="false" -->
         <!-- android:parentActivityName=".MainActivity" /> -->
         <activity
-            android:name=".MainActivity"
+            android:name="org.secureos.dpc.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,7 @@
         </activity>
 
         <receiver
-            android:name=".deviceAdmin.DeviceAdmin"
+            android:name="org.secureos.dpc.deviceAdmin.DeviceAdmin"
             android:exported="false"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_DEVICE_ADMIN">

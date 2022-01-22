@@ -1,4 +1,4 @@
-package com.utkarsh.firsttestdpm.permissionManagement
+package org.secureos.dpc.permissionManagement
 
 import android.content.Context
 import android.util.Log
@@ -8,7 +8,6 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 
 val Context.permissionData : DataStore<Preferences> by preferencesDataStore(name = "permission")
 class PermissionPrefManager(context: Context){

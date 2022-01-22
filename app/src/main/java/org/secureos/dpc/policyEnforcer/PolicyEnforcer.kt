@@ -1,4 +1,4 @@
-package com.utkarsh.firsttestdpm.policyEnforcer
+package org.secureos.dpc.policyEnforcer
 
 import android.app.admin.DevicePolicyManager
 import android.content.ComponentName
@@ -6,20 +6,16 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.utkarsh.firsttestdpm.R
-import com.utkarsh.firsttestdpm.deviceAdmin.DeviceAdmin
-import com.utkarsh.firsttestdpm.packageManagement.PackageActivity
-import com.utkarsh.firsttestdpm.packageManagement.PackagePrefManager
-import com.utkarsh.firsttestdpm.permissionManagement.PermissionActivity
-import com.utkarsh.firsttestdpm.permissionManagement.PermissionData
-import com.utkarsh.firsttestdpm.permissionManagement.PermissionPrefManager
+import org.secureos.dpc.deviceAdmin.DeviceAdmin
+import org.secureos.dpc.packageManagement.PackagePrefManager
+import org.secureos.dpc.permissionManagement.PermissionData
+import org.secureos.dpc.permissionManagement.PermissionPrefManager
 import kotlinx.coroutines.runBlocking
-import java.security.acl.Permission
 
 class PolicyEnforcer : AppCompatActivity() {
-    private val cn = ComponentName(this,DeviceAdmin::class.java)
+    private val cn = ComponentName(this, DeviceAdmin::class.java)
     private val dpm = getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

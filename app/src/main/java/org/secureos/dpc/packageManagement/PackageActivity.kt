@@ -1,6 +1,5 @@
-package com.utkarsh.firsttestdpm.packageManagement
+package org.secureos.dpc.packageManagement
 
-import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +20,7 @@ class PackageActivity : AppCompatActivity() {
             packageManager.getInstalledApplications(PackageManager.MATCH_DISABLED_COMPONENTS or PackageManager.MATCH_DISABLED_COMPONENTS)
         val packageRecyclerView = findViewById<RecyclerView>(R.id.package_recycler_view)
         packageList.sortBy { it.packageName }
-        packageRecyclerView.adapter = ItemAdapter(this,packageList,packageManager,PackagePrefManager(this),lifecycleScope)
+        packageRecyclerView.adapter = ItemAdapter(this,packageList,packageManager,
+            PackagePrefManager(this),lifecycleScope)
     }
 }

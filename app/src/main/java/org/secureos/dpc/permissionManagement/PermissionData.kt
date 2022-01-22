@@ -1,4 +1,4 @@
-package com.utkarsh.firsttestdpm.permissionManagement
+package org.secureos.dpc.permissionManagement
 
 import android.os.UserManager
 

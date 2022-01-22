@@ -1,4 +1,4 @@
-package com.utkarsh.firsttestdpm
+package org.secureos.dpc
 
 
 import android.content.Intent
@@ -6,8 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import com.utkarsh.firsttestdpm.packageManagement.PackageActivity
-import com.utkarsh.firsttestdpm.permissionManagement.PermissionActivity
+import com.utkarsh.firsttestdpm.R
+import org.secureos.dpc.packageManagement.PackageActivity
+import org.secureos.dpc.permissionManagement.PermissionActivity
 
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.utkarsh.firsttestdpm.packageManagement
+package org.secureos.dpc.packageManagement
 
 import android.content.Context
 import android.content.pm.ApplicationInfo
@@ -14,8 +14,6 @@ import androidx.lifecycle.LifecycleCoroutineScope
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.switchmaterial.SwitchMaterial
 import com.utkarsh.firsttestdpm.R
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class ItemAdapter(

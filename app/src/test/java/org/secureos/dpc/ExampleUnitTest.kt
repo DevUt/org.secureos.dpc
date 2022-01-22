@@ -1,4 +1,4 @@
-package com.utkarsh.firsttestdpm
+package org.secureos.dpc
 
 import org.junit.Test
 

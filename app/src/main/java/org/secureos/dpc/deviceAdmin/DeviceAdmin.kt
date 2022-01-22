@@ -1,10 +1,9 @@
-package com.utkarsh.firsttestdpm.deviceAdmin
+package org.secureos.dpc.deviceAdmin
 
 import android.app.admin.DeviceAdminReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.utkarsh.firsttestdpm.packageManagement.PackageActivity
 
 class DeviceAdmin : DeviceAdminReceiver(){
     companion object{

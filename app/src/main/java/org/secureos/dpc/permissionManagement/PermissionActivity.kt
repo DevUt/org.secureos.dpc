@@ -1,7 +1,6 @@
-package com.utkarsh.firsttestdpm.permissionManagement
+package org.secureos.dpc.permissionManagement
 
 import android.os.Bundle
-import android.os.UserManager
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +18,7 @@ class PermissionActivity: AppCompatActivity(){
         val permissionRecyclerView = findViewById<RecyclerView>(R.id.permission_recycler_view)
         val permissionD = PermissionData()
         permissionD.populateData()
-        permissionRecyclerView.adapter = ItemAdapter(this,permissionD,PermissionPrefManager(this))
+        permissionRecyclerView.adapter = ItemAdapter(this,permissionD, PermissionPrefManager(this))
     }
 
 }

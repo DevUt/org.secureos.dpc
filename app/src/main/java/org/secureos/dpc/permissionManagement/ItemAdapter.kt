@@ -1,4 +1,4 @@
-package com.utkarsh.firsttestdpm.permissionManagement
+package org.secureos.dpc.permissionManagement
 
 import android.content.Context
 import android.graphics.Color
