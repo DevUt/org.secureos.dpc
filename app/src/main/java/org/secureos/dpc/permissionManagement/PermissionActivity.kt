@@ -16,8 +16,9 @@ class PermissionActivity: AppCompatActivity(){
         Log.d(TAG, "onCreate() Called")
         setContentView(R.layout.permission_layout)
         val permissionRecyclerView = findViewById<RecyclerView>(R.id.permission_recycler_view)
-        val permissionD = PermissionData()
+        val permissionD = PermissionData(this)
         permissionD.populateData()
+        permissionD.enforceData()
         permissionRecyclerView.adapter = ItemAdapter(this,permissionD, PermissionPrefManager(this))
     }
 

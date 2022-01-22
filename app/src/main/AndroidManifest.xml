@@ -20,9 +20,6 @@
             android:name="org.secureos.dpc.permissionManagement.PermissionActivity"
             android:exported="false" />
         <activity
-            android:name="org.secureos.dpc.policyEnforcer.PolicyEnforcer"
-            android:exported="false" />
-        <activity
             android:name="org.secureos.dpc.packageManagement.PackageActivity"
             android:exported="false"
             android:parentActivityName="org.secureos.dpc.MainActivity" /> <!-- <activity -->

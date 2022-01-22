@@ -1,8 +1,10 @@
 package org.secureos.dpc.permissionManagement
 
+import android.content.Context
 import android.os.UserManager
+import kotlinx.coroutines.runBlocking
 
-class PermissionData {
+class PermissionData(val context: Context){
     val permissionList = mutableListOf<Pair<String,Int>>()
 
     fun populateData(){
@@ -26,5 +28,14 @@ class PermissionData {
     }
     fun returnData() : MutableList<Pair<String,Int>>{
         return permissionList
+    }
+
+    fun enforceData() {
+        val permissionPref = PermissionPrefManager(context)
+        for(perms in permissionList){
+            runBlocking {
+                permissionPref.writePermEnabled(perms.first,perms.second)
+            }
+        }
     }
 }
