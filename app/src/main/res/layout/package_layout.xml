@@ -10,6 +10,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@drawable/gradient_background"
         android:id="@+id/package_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

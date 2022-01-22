@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/item_list_background"
         android:id="@+id/permission_constraint_layout"
         android:padding="10dp"
         android:layout_width="match_parent"
@@ -14,21 +15,23 @@
 
         <TextView
             android:id="@+id/permission_name"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="16dp"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@id/disable_switch"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.677"
-            tools:text="WRITE_EXTERNAL_STORAGE"
-            app:layout_constraintStart_toStartOf="parent"/>
+            tools:text="WRITE_EXTERNAL_STORAGE" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/disable_switch"
+            android:background="@drawable/stroke"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:importantForAccessibility="no"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
