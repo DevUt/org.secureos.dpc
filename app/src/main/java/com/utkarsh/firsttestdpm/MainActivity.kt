@@ -18,16 +18,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d(TAG, "onCreate()")
-        val packagePage: Button = findViewById(R.id.go_to_package_page)
+        val packagePage : Button = findViewById(R.id.go_to_package_page)
         packagePage.setOnClickListener {
             val packageIntent = Intent(this, PackageActivity::class.java)
             this.startActivity(packageIntent)
-
-            val permissionPage: Button = findViewById(R.id.go_to_permission_page)
-            permissionPage.setOnClickListener {
-                val permissionIntent = Intent(this, PermissionActivity::class.java)
-                this.startActivity(permissionIntent)
-            }
+        }
+        val permissionPage: Button = findViewById(R.id.go_to_permission_page)
+        permissionPage.setOnClickListener {
+            val permissionIntent = Intent(this, PermissionActivity::class.java)
+            this.startActivity(permissionIntent)
         }
     }
 }

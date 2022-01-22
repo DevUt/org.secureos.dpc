@@ -15,7 +15,7 @@ class PermissionActivity: AppCompatActivity(){
     companion object {
         const val TAG = "PermissionActivity"
     }
-    lateinit var permissionList: MutableList<Pair<String,Int>>
+   var permissionList = mutableListOf<Pair<String,Int>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
