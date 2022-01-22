@@ -17,12 +17,18 @@
         android:testOnly="false"
         android:theme="@style/Theme.FirstTestDPM">
         <activity
+            android:name=".permissionManagement.PermissionActivity"
+            android:exported="false" />
+        <activity
             android:name=".policyEnforcer.PolicyEnforcer"
             android:exported="false" />
         <activity
             android:name=".packageManagement.PackageActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity" /> <!-- <activity -->
+        <!-- android:name=".permissionManagement.PermissionActivity" -->
+        <!-- android:exported="false" -->
+        <!-- android:parentActivityName=".MainActivity" /> -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
