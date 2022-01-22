@@ -36,4 +36,5 @@ class PackagePrefManager(context: Context){
             Log.i("PackageItem",packageName + " " + pref[packageKey].toString() + " Intended : " + enabled.toString())
         }
     }
+
 }
