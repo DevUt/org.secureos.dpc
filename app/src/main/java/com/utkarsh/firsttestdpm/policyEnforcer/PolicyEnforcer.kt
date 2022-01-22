@@ -10,8 +10,13 @@ import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.utkarsh.firsttestdpm.R
 import com.utkarsh.firsttestdpm.deviceAdmin.DeviceAdmin
+import com.utkarsh.firsttestdpm.packageManagement.PackageActivity
 import com.utkarsh.firsttestdpm.packageManagement.PackagePrefManager
+import com.utkarsh.firsttestdpm.permissionManagement.PermissionActivity
+import com.utkarsh.firsttestdpm.permissionManagement.PermissionData
+import com.utkarsh.firsttestdpm.permissionManagement.PermissionPrefManager
 import kotlinx.coroutines.runBlocking
+import java.security.acl.Permission
 
 class PolicyEnforcer : AppCompatActivity() {
     private val cn = ComponentName(this,DeviceAdmin::class.java)
@@ -27,6 +32,8 @@ class PolicyEnforcer : AppCompatActivity() {
         enforcePackagePolicy()
         Snackbar.make(findViewById(android.R.id.content),"Enforcing Password Policy",Snackbar.LENGTH_SHORT).show()
         enforcePasswordPolicy()
+        Snackbar.make(findViewById(android.R.id.content),"Enforcing Permission Policy",Snackbar.LENGTH_SHORT).show()
+        enforcePermissionPolicy()
     }
     private fun enforcePackagePolicy(){
         val packageList =
@@ -37,6 +44,20 @@ class PolicyEnforcer : AppCompatActivity() {
             runBlocking {
                 if(packageRead.readEnabled(app.packageName) == 2){
                     dpm.setApplicationHidden(cn,app.packageName,true)
+                }
+            }
+        }
+    }
+
+    private fun enforcePermissionPolicy(){
+        val permissionD = PermissionData()
+        permissionD.populateData()
+        val permissionList = permissionD.returnData()
+        val permissionPref = PermissionPrefManager(this)
+        for(permission in permissionList){
+            runBlocking {
+                if(permissionPref.readPermEnabled(permission.first) == 2){
+                    dpm.addUserRestriction(cn,permission.first)
                 }
             }
         }
