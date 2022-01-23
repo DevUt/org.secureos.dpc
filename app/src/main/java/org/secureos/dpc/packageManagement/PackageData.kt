@@ -18,6 +18,7 @@ class PackageData(val context : Context,extraSpecification : Int,val includeSyst
             }
             packages.add(app)
         }
+        packages.sortBy { it.packageName }
         return packages
     }
 
