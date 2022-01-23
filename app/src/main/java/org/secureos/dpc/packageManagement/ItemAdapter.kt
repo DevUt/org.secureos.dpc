@@ -17,11 +17,9 @@ import kotlinx.coroutines.runBlocking
 import org.secureos.dpc.R
 
 class ItemAdapter(
-    private val context: Context,
     private val packageList: MutableList<ApplicationInfo>,
-    private val pm: PackageManager,
     private val packagePref: PackagePrefManager,
-    private val lifecycleScope: LifecycleCoroutineScope,
+    private val pm : PackageManager
 ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val packageName: TextView = view.findViewById(R.id.package_name)
@@ -34,11 +32,10 @@ class ItemAdapter(
             LayoutInflater.from(parent.context).inflate(R.layout.package_list_item, parent, false)
         return ItemViewHolder(adapterLayout)
     }
-
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = packageList[position]
         holder.disableSwitch.isChecked = item.enabled
-        holder.packageName.text = item.packageName
+        holder.packageName.text = item.loadLabel(pm).toString()
         holder.packageIcon.setImageDrawable(item.loadIcon(pm))
         // 0-> not set 1-> enabled 2-> disabled
         runBlocking{

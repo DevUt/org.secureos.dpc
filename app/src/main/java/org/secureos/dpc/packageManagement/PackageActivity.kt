@@ -16,11 +16,9 @@ class PackageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Log.d(TAG, "onCreate() Called")
         setContentView(R.layout.package_layout)
-        val packageList =
-            packageManager.getInstalledApplications(PackageManager.MATCH_DISABLED_COMPONENTS)
+        val packageList = PackageData(this,PackageManager.MATCH_DISABLED_COMPONENTS,true).returnData()
         val packageRecyclerView = findViewById<RecyclerView>(R.id.package_recycler_view)
         packageList.sortBy { it.packageName }
-        packageRecyclerView.adapter = ItemAdapter(this,packageList,packageManager,
-            PackagePrefManager(this),lifecycleScope)
+        packageRecyclerView.adapter = ItemAdapter(packageList,PackagePrefManager(this),packageManager)
     }
 }

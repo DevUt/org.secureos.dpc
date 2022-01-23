@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.util.Log
 import android.widget.Toast
 import kotlinx.coroutines.runBlocking
+import org.secureos.dpc.packageManagement.PackageData
 import org.secureos.dpc.packageManagement.PackagePrefManager
 import org.secureos.dpc.permissionManagement.PermissionData
 import org.secureos.dpc.permissionManagement.PermissionPrefManager
@@ -30,12 +31,13 @@ class DeviceAdmin : DeviceAdminReceiver(){
         enablePackagePolicy(context.applicationContext)
         Log.d(TAG,"Enabled package policy")
         Log.d(TAG,"Enabling permission policy")
-        enablePermissionPolicy(context.applicationContext)
+        // Wait on permission Policy
+//        enablePermissionPolicy(context.applicationContext)
     }
     private fun enablePackagePolicy(context: Context){
         Log.d(TAG,"Enabling Package Policy")
         val packagePref = PackagePrefManager(context)
-        val packageList = context.packageManager.getInstalledApplications(PackageManager.MATCH_DISABLED_COMPONENTS)
+        val packageList = PackageData(context,PackageManager.MATCH_DISABLED_COMPONENTS,false).returnData()
         for(app in packageList){
             runBlocking {
                 if(packagePref.readEnabled(app.packageName) == 2){
