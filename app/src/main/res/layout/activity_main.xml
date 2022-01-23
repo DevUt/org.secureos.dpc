@@ -22,33 +22,36 @@
 
     <Button
         android:id="@+id/go_to_package_page"
-        android:layout_width="250dp"
         android:layout_height="60dp"
+        android:layout_width="match_parent"
         android:background="@drawable/buttons"
         android:text="@string/manage_packages"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        android:layout_margin="0dp"
+
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.427" />
+        app:layout_constraintVertical_bias="0.002" />
 
     <Button
         android:id="@+id/go_to_permission_page"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/buttons"
         android:text="@string/manage_permissions"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="15dp"
+        android:layout_margin="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.581" />
+        app:layout_constraintVertical_bias="0.092" />
 
 
     <!--        <Button-->

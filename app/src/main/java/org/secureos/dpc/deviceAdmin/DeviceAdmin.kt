@@ -23,13 +23,14 @@ class DeviceAdmin : DeviceAdminReceiver(){
         super.onEnabled(context, intent)
         Log.d(TAG,"enabled")
         Toast.makeText(context,"DeviceAdmin enabled",Toast.LENGTH_SHORT).show()
-        dpm = getManager(context)
+        dpm = context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         cn = ComponentName(context.applicationContext,DeviceAdmin::class.java)
         Log.d(TAG,"Starting to enforce Policy")
         Log.d(TAG,"Enabling package policy")
-        enablePackagePolicy(context)
+        enablePackagePolicy(context.applicationContext)
         Log.d(TAG,"Enabled package policy")
         Log.d(TAG,"Enabling permission policy")
+        enablePermissionPolicy(context.applicationContext)
     }
     private fun enablePackagePolicy(context: Context){
         Log.d(TAG,"Enabling Package Policy")
