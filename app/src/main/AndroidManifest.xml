@@ -9,7 +9,7 @@
         tools:ignore="QueryAllPackagesPermission" />
 
     <application
-        android:allowBackup= "true"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -17,17 +17,20 @@
         android:testOnly="false"
         android:theme="@style/Theme.FirstTestDPM">
         <activity
-            android:name="org.secureos.dpc.permissionManagement.PermissionActivity"
+            android:name=".misc.Misc"
             android:exported="false" />
         <activity
-            android:name="org.secureos.dpc.packageManagement.PackageActivity"
+            android:name=".permissionManagement.PermissionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".packageManagement.PackageActivity"
             android:exported="false"
-            android:parentActivityName="org.secureos.dpc.MainActivity" /> <!-- <activity -->
+            android:parentActivityName=".MainActivity" /> <!-- <activity -->
         <!-- android:name=".permissionManagement.PermissionActivity" -->
         <!-- android:exported="false" -->
         <!-- android:parentActivityName=".MainActivity" /> -->
         <activity
-            android:name="org.secureos.dpc.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +40,7 @@
         </activity>
 
         <receiver
-            android:name="org.secureos.dpc.deviceAdmin.DeviceAdmin"
+            android:name=".deviceAdmin.DeviceAdmin"
             android:exported="false"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_DEVICE_ADMIN">

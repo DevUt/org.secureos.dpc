@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import org.secureos.dpc.R
+import org.secureos.dpc.misc.Misc
 import org.secureos.dpc.packageManagement.PackageActivity
 import org.secureos.dpc.permissionManagement.PermissionActivity
 
@@ -29,6 +30,12 @@ class MainActivity : AppCompatActivity() {
             val permissionIntent = Intent(this, PermissionActivity::class.java)
             this.startActivity(permissionIntent)
         }
+        val miscPage: Button = findViewById(R.id.go_to_misc_page)
+        miscPage.setOnClickListener{
+            val  miscIntent = Intent(this, Misc::class.java)
+            this.startActivity(miscIntent)
+        }
+
     }
 }
 

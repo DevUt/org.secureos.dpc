@@ -9,6 +9,8 @@ import android.content.pm.PackageManager
 import android.util.Log
 import android.widget.Toast
 import kotlinx.coroutines.runBlocking
+import org.secureos.dpc.misc.Misc
+import org.secureos.dpc.misc.MiscPrefManager
 import org.secureos.dpc.packageManagement.PackageData
 import org.secureos.dpc.packageManagement.PackagePrefManager
 import org.secureos.dpc.permissionManagement.PermissionData
@@ -61,4 +63,15 @@ class DeviceAdmin : DeviceAdminReceiver(){
             }
         }
     }
+    private fun enableMiscPolicy(context: Context){
+        Log.d(TAG,"Enabling Misc Page")
+        val miscPref = MiscPrefManager(context)
+        runBlocking {
+            if(miscPref.readEnabled("camera") == 1){
+                dpm.setCameraDisabled(cn,true)
+            }
+        }
+    }
+
+
 }
