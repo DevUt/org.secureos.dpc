@@ -32,7 +32,8 @@ class DeviceAdmin : DeviceAdminReceiver(){
         Log.d(TAG,"Enabled package policy")
         Log.d(TAG,"Enabling permission policy")
         // Wait on permission Policy
-//        enablePermissionPolicy(context.applicationContext)
+        enablePermissionPolicy(context.applicationContext)
+        Log.d(TAG,"Enabled permission policy")
     }
     private fun enablePackagePolicy(context: Context){
         Log.d(TAG,"Enabling Package Policy")

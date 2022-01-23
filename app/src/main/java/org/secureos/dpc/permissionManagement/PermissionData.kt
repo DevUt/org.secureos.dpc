@@ -16,6 +16,7 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_AUTOFILL,2))
         permissionList.add(Pair(UserManager.DISALLOW_FUN,2))
         permissionList.add(Pair(UserManager.DISALLOW_OUTGOING_CALLS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_OUTGOING_BEAM,2))
         permissionList.add(Pair(UserManager.DISALLOW_USB_FILE_TRANSFER,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_BLUETOOTH,2))
         permissionList.add(Pair(UserManager.DISALLOW_NETWORK_RESET,2))
@@ -28,6 +29,10 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_USER_SWITCH,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_CELL_BROADCASTS,2))
         permissionList.add(Pair(UserManager.DISALLOW_MODIFY_ACCOUNTS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_FACTORY_RESET,2))
+        permissionList.add(Pair(UserManager.DISALLOW_CONFIG_LOCATION,2))
+
+
         // DEPRECATED
 //        permissionList.add(Pair(UserManager.DISALLOW_ADD_MANAGED_PROFILE,2))
         permissionList.add(Pair(UserManager.DISALLOW_APPS_CONTROL,2))
@@ -40,6 +45,8 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_CONTENT_SUGGESTIONS,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_SCREEN_TIMEOUT,2))
         permissionList.add(Pair(UserManager.DISALLOW_AMBIENT_DISPLAY,2))
+        permissionList.add(Pair(UserManager.DISALLOW_CONFIG_VPN,2))
+
 
     }
     fun returnData() : MutableList<Pair<String,Int>>{
