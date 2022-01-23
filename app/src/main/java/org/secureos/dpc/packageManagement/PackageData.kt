@@ -18,7 +18,7 @@ class PackageData(val context : Context,extraSpecification : Int,val includeSyst
             }
             packages.add(app)
         }
-        packages.sortBy { it.packageName }
+        packages.sortBy { it.loadLabel(context.packageManager).toString() }
         return packages
     }
 
