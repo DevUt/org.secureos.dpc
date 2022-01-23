@@ -25,6 +25,22 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_REMOVE_USER,2))
         permissionList.add(Pair(UserManager.DISALLOW_AIRPLANE_MODE,2))
         permissionList.add(Pair(UserManager.DISALLOW_DEBUGGING_FEATURES,2))
+        permissionList.add(Pair(UserManager.DISALLOW_USER_SWITCH,2))
+        permissionList.add(Pair(UserManager.DISALLOW_CONFIG_CELL_BROADCASTS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_MODIFY_ACCOUNTS,2))
+        // DEPRECATED
+//        permissionList.add(Pair(UserManager.DISALLOW_ADD_MANAGED_PROFILE,2))
+        permissionList.add(Pair(UserManager.DISALLOW_APPS_CONTROL,2))
+        // THIS WOULD JUST DISABLE ALL INSTALLATION
+//        permissionList.add(Pair(UserManager.DISALLOW_INSTALL_APPS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_UNINSTALL_APPS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_SAFE_BOOT,2))
+        permissionList.add(Pair(UserManager.DISALLOW_SYSTEM_ERROR_DIALOGS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_MOUNT_PHYSICAL_MEDIA,2))
+        permissionList.add(Pair(UserManager.DISALLOW_CONTENT_SUGGESTIONS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_CONFIG_SCREEN_TIMEOUT,2))
+        permissionList.add(Pair(UserManager.DISALLOW_AMBIENT_DISPLAY,2))
+
     }
     fun returnData() : MutableList<Pair<String,Int>>{
         return permissionList
