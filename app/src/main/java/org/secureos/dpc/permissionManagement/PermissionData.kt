@@ -7,7 +7,7 @@ import kotlinx.coroutines.runBlocking
 class PermissionData(val context: Context){
     val permissionList = mutableListOf<Pair<String,Int>>()
 
-    fun populateData(){
+    fun populateData() : PermissionData{
         permissionList.add(Pair(UserManager.DISALLOW_BLUETOOTH,2))
         permissionList.add(Pair(UserManager.DISALLOW_BLUETOOTH_SHARING,2))
         permissionList.add(Pair(UserManager.DISALLOW_SHARE_LOCATION,2))
@@ -46,19 +46,19 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_SCREEN_TIMEOUT,2))
         permissionList.add(Pair(UserManager.DISALLOW_AMBIENT_DISPLAY,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_VPN,2))
-
-
+        return this
     }
     fun returnData() : MutableList<Pair<String,Int>>{
         return permissionList
     }
 
-    fun enforceData() {
+    fun enforceData() : PermissionData{
         val permissionPref = PermissionPrefManager(context)
         for(perms in permissionList){
             runBlocking {
                 permissionPref.writePermEnabled(perms.first,perms.second)
             }
         }
+        return this
     }
 }

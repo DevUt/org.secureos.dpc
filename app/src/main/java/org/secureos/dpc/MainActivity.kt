@@ -10,6 +10,7 @@ import org.secureos.dpc.R
 import org.secureos.dpc.misc.Misc
 import org.secureos.dpc.packageManagement.PackageActivity
 import org.secureos.dpc.permissionManagement.PermissionActivity
+import org.secureos.dpc.permissionManagement.PermissionData
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             val permissionIntent = Intent(this, PermissionActivity::class.java)
             this.startActivity(permissionIntent)
         }
+        PermissionData(this).populateData().enforceData()
         val miscPage: Button = findViewById(R.id.go_to_misc_page)
         miscPage.setOnClickListener{
             val  miscIntent = Intent(this, Misc::class.java)
