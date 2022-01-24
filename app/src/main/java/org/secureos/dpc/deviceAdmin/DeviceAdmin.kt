@@ -14,6 +14,8 @@ import org.secureos.dpc.packageManagement.PackageData
 import org.secureos.dpc.packageManagement.PackagePrefManager
 import org.secureos.dpc.permissionManagement.PermissionData
 import org.secureos.dpc.permissionManagement.PermissionPrefManager
+import java.util.*
+import kotlin.concurrent.schedule
 
 class DeviceAdmin : DeviceAdminReceiver() {
     companion object {
@@ -93,9 +95,16 @@ class DeviceAdmin : DeviceAdminReceiver() {
             val setPassIntent = Intent(DevicePolicyManager.ACTION_SET_NEW_PASSWORD)
             setPassIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.applicationContext.startActivity(setPassIntent)
-            if(dpm.passwordComplexity != dpm.requiredPasswordComplexity){
-                enablePasswordPolicy(context)
+
+            Timer("SettingUp", false).schedule(60000) {
+                if(dpm.passwordComplexity != dpm.requiredPasswordComplexity){
+                    enablePasswordPolicy(context)
+                }
             }
+//            if(dpm.passwordComplexity != dpm.requiredPasswordComplexity){
+//                enablePasswordPolicy(context)
+//            }
+            Toast.makeText(context, "BRUH", Toast.LENGTH_SHORT).show()
         }
         val maxWipeTries = runBlocking {
             MiscPrefManager(context.applicationContext).readEnabled("wipe_retries")

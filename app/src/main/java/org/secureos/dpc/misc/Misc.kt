@@ -1,11 +1,13 @@
 package org.secureos.dpc.misc
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.coroutines.runBlocking
+import org.secureos.dpc.MainActivity
 import org.secureos.dpc.R
 import java.security.AccessControlContext
 
@@ -45,6 +47,7 @@ class Misc : AppCompatActivity() {
                     )
                 }
             }
+
         }
         runBlocking {
             val wipeRetriesD = MiscPrefManager(this@Misc).readEnabled("wipe_retries")
