@@ -14,35 +14,49 @@ class Misc : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_misc)
-        val cameraSwitch = findViewById<com.google.android.material.switchmaterial.SwitchMaterial>(R.id.camera_switch)
-        var currCameraStatus : Int?
+        val cameraSwitch =
+            findViewById<com.google.android.material.switchmaterial.SwitchMaterial>(R.id.camera_switch)
+        var currCameraStatus: Int?
         runBlocking {
             currCameraStatus = MiscPrefManager(this@Misc).readEnabled("camera")
         }
-        if(currCameraStatus != null){
+        if (currCameraStatus != null) {
             cameraSwitch.isChecked = (currCameraStatus == 1)
         }
         cameraSwitch.setOnClickListener {
             runBlocking {
                 val writeCameraD = MiscPrefManager(this@Misc)
-                writeCameraD.writeEnabled("camera",(!cameraSwitch.isChecked).toInt())
+                writeCameraD.writeEnabled("camera", (cameraSwitch.isChecked).toInt())
             }
         }
 
-        val saveButton : Button = findViewById(R.id.misc_save)
-        val minWipeTries : com.google.android.material.textfield.TextInputEditText = findViewById(R.id.password_wipe_length)
+        val saveButton: Button = findViewById(R.id.misc_save)
+        val minWipeTries: com.google.android.material.textfield.TextInputEditText =
+            findViewById(R.id.password_wipe_length)
         saveButton.setOnClickListener {
-            if(minWipeTries.text.toString().isNullOrBlank()){
-                Toast.makeText(this,"Text Field Can't be empty",Toast.LENGTH_LONG).show()
+            if (minWipeTries.text.toString().isNullOrBlank()) {
+                Toast.makeText(this, "Text Field Can't be empty", Toast.LENGTH_LONG).show()
                 recreate()
-            }else{
+            } else {
                 runBlocking {
-                    MiscPrefManager(this@Misc).writeEnabled("wipe_retries",minWipeTries.text.toString().toInt())
+                    MiscPrefManager(this@Misc).writeEnabled(
+                        "wipe_retries",
+                        minWipeTries.text.toString().toInt()
+                    )
                 }
+            }
+        }
+        runBlocking {
+            val wipeRetriesD = MiscPrefManager(this@Misc).readEnabled("wipe_retries")
+            if (wipeRetriesD == 0) {
+                minWipeTries.setText("5")
+            } else {
+                minWipeTries.setText(wipeRetriesD.toString())
             }
         }
 
     }
+
     private fun Boolean.toInt() = if (this) 1 else 0
 
 }

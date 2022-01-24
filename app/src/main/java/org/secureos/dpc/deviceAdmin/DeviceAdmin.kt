@@ -82,10 +82,10 @@ class DeviceAdmin : DeviceAdminReceiver(){
     private fun enablePasswordPolicy(context: Context){
         Log.d(TAG,"Checking compliance to Password standards")
         dpm.requiredPasswordComplexity = DevicePolicyManager.PASSWORD_COMPLEXITY_HIGH
-        while(!dpm.isActivePasswordSufficientForDeviceRequirement){
+        if(dpm.passwordComplexity != dpm.requiredPasswordComplexity){
             Toast.makeText(context,"Set a better password",Toast.LENGTH_LONG).show()
-            val passIntent = Intent(context,DevicePolicyManager.ACTION_SET_NEW_PASSWORD::class.java)
-            context.applicationContext.startActivity(passIntent)
+//            dpm.removeActiveAdmin(cn)
+//            return
         }
         val maxWipeTries = runBlocking {
             MiscPrefManager(context.applicationContext).readEnabled("wipe_retries")
