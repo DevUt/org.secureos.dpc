@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Anand Kumar Tiwari/AndroidStudioProjects/FirstTestDPM/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Anand Kumar Tiwari/AndroidStudioProjects/FirstTestDPM/app/src/main/res/layout/activity_misc.xml" value="0.33" />
         <entry key="..\:/Users/Anand Kumar Tiwari/AndroidStudioProjects/FirstTestDPM/app/src/main/res/layout/activity_policy_enforcer.xml" value="0.182518115942029" />
         <entry key="..\:/Users/Anand Kumar Tiwari/AndroidStudioProjects/FirstTestDPM/app/src/main/res/layout/package_layout.xml" value="0.182518115942029" />
         <entry key="..\:/Users/Anand Kumar Tiwari/AndroidStudioProjects/FirstTestDPM/app/src/main/res/layout/package_list_item.xml" value="0.5" />
@@ -16,7 +17,6 @@
         <entry key="..\:/Users/nisar/Desktop/testdpm/testdpm/app/src/main/res/drawable/item_list_background.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/nisar/Desktop/testdpm/testdpm/app/src/main/res/drawable/stroke.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/nisar/Desktop/testdpm/testdpm/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="..\:/Users/nisar/Desktop/testdpm/testdpm/app/src/main/res/layout/activity_misc.xml" value="0.1" />
         <entry key="..\:/Users/nisar/Desktop/testdpm/testdpm/app/src/main/res/layout/package_layout.xml" value="0.14175724637681159" />
         <entry key="..\:/Users/nisar/Desktop/testdpm/testdpm/app/src/main/res/layout/package_list_item.xml" value="0.37626628075253254" />
         <entry key="..\:/Users/nisar/Desktop/testdpm/testdpm/app/src/main/res/layout/permission_layout.xml" value="0.11775362318840579" />
