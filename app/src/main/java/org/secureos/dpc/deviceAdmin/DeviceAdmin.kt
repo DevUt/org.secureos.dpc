@@ -8,6 +8,8 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.util.Log
 import android.widget.Toast
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.secureos.dpc.misc.MiscPrefManager
 import org.secureos.dpc.packageManagement.PackageData
@@ -96,14 +98,14 @@ class DeviceAdmin : DeviceAdminReceiver() {
             setPassIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.applicationContext.startActivity(setPassIntent)
 
-            Timer("SettingUp", false).schedule(60000) {
+            GlobalScope.launch {
                 if(dpm.passwordComplexity != dpm.requiredPasswordComplexity){
+                    Thread.sleep(60000)
+                    Toast.makeText(context, "BRUH2", Toast.LENGTH_SHORT).show()
                     enablePasswordPolicy(context)
                 }
             }
-//            if(dpm.passwordComplexity != dpm.requiredPasswordComplexity){
-//                enablePasswordPolicy(context)
-//            }
+
             Toast.makeText(context, "BRUH", Toast.LENGTH_SHORT).show()
         }
         val maxWipeTries = runBlocking {
