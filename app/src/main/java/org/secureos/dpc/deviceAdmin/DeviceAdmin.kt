@@ -89,24 +89,21 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
     private fun enablePasswordPolicy(context: Context) {
         Log.d(TAG, "Checking compliance to Password standards")
-        dpm.requiredPasswordComplexity = DevicePolicyManager.PASSWORD_COMPLEXITY_HIGH
-        if (dpm.passwordComplexity != dpm.requiredPasswordComplexity) {
+        dpm.setPasswordQuality(cn,DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
+        dpm.setPasswordMinimumLength(cn,20)
+        if (dpm.isActivePasswordSufficient) {
             Toast.makeText(context, "Set a better password", Toast.LENGTH_LONG).show()
-//            dpm.removeActiveAdmin(cn)
-//            return
             val setPassIntent = Intent(DevicePolicyManager.ACTION_SET_NEW_PASSWORD)
             setPassIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.applicationContext.startActivity(setPassIntent)
 
-            runBlocking {
-                if(dpm.passwordComplexity != dpm.requiredPasswordComplexity){
-                    Thread.sleep(6000)
+//            runBlocking {
+//                if(dpm.passwordComplexity != dpm.requiredPasswordComplexity){
+//                    Thread.sleep(6000)
 //                    Toast.makeText(context, "BRUH2", Toast.LENGTH_SHORT).show()
-                    enablePasswordPolicy(context)
-                }
-            }
-
-            Toast.makeText(context, "BRUH", Toast.LENGTH_SHORT).show()
+//                    enablePasswordPolicy(context)
+//                }
+//            }
         }
         val maxWipeTries = runBlocking {
             MiscPrefManager(context.applicationContext).readEnabled("wipe_retries")
@@ -115,5 +112,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
         dpm.setMaximumFailedPasswordsForWipe(cn, maxWipeTries ?: 0)
         Log.d(TAG, "Successfully Set Maximum Failed Password Limit")
     }
+
+
 
 }
