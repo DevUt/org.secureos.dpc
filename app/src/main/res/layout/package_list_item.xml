@@ -2,24 +2,25 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="8dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:background="@drawable/item_list_background"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/package_constraint_layout"
-        android:padding="10dp"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/item_list_background"
+        android:padding="10dp">
 
         <ImageView
             android:id="@+id/package_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="10dp"
-            android:importantForAccessibility="no"
             android:contentDescription="@string/package_icon"
+            android:importantForAccessibility="no"
+            android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -27,28 +28,32 @@
 
         <TextView
             android:id="@+id/package_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/disable_switch"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toStartOf="@+id/disable_check"
+            app:layout_constraintHorizontal_bias="0.036"
             app:layout_constraintStart_toEndOf="@id/package_icon"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.515"
-            tools:text="com.utkarsh.package" />
+            app:layout_constraintVertical_bias="0.512"
+            tools:text="com.secureos.package" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:background="@drawable/stroke"
-            android:id="@+id/disable_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="4dp"
-            android:importantForAccessibility="no"
+        <CheckBox
+            android:id="@+id/disable_check"
+            android:layout_width="42dp"
+            android:layout_height="41dp"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>
