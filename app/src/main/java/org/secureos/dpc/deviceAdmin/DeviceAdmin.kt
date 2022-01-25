@@ -91,7 +91,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "Checking compliance to Password standards")
         dpm.setPasswordQuality(cn,DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
         dpm.setPasswordMinimumLength(cn,20)
-        if (dpm.isActivePasswordSufficient) {
+        if (!dpm.isActivePasswordSufficient) {
             Toast.makeText(context, "Set a better password", Toast.LENGTH_LONG).show()
             val setPassIntent = Intent(DevicePolicyManager.ACTION_SET_NEW_PASSWORD)
             setPassIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

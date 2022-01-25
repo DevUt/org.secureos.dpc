@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/save_curr_settings"
+    android:background="@drawable/gradient_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,7 +12,9 @@
         android:id="@+id/camera_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,7 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/item_list_background"
-            android:padding="10dp">
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
 
 
             <TextView
@@ -29,20 +33,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/disable_camera"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/camera_switch"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.609" />
+                app:layout_constraintVertical_bias="0.2" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/camera_switch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/stroke"
                 android:importantForAccessibility="no"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -62,16 +66,27 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password_length">
+            android:layout_height="match_parent"
+            android:hint="@string/password_length"
+            android:background="@drawable/gradient_background"
+            app:hintTextColor="@color/white"
+            android:textColorHint="@color/white"
+            android:paddingTop="20dp"
+            android:textAlignment="viewStart">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_wipe_length"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/buttons"
                 android:inputType="numberDecimal"
-                android:text="5" />
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
 
+                android:text="5"/>
         </com.google.android.material.textfield.TextInputLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -80,10 +95,14 @@
         android:id="@+id/misc_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/buttons"
+        android:padding="10dp"
         android:text="Save Settings"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_wipe_length_card" />
+        app:layout_constraintTop_toBottomOf="@+id/password_wipe_length_card"
+        app:layout_constraintVertical_bias="0.22" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
