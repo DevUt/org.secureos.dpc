@@ -52,11 +52,21 @@ class PermissionData(val context: Context){
         return permissionList
     }
 
+
+    /*
+     * We only Enforce data when it has already been not set
+     * All other actions that are done using the switch
+     * are handled by the switch's onClickListener
+     * This func is only for non-set data, and should be called once
+     * calling it  on any object after its first call on any instance
+     * wouldn't have any affect
+     */
     fun enforceData() : PermissionData{
         val permissionPref = PermissionPrefManager(context)
         for(perms in permissionList){
             runBlocking {
-                permissionPref.writePermEnabled(perms.first,perms.second)
+                if(permissionPref.readPermEnabled(perms.first) == 0)
+                    permissionPref.writePermEnabled(perms.first,perms.second)
             }
         }
         return this

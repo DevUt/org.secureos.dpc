@@ -18,7 +18,6 @@ class PermissionActivity: AppCompatActivity(){
         val permissionRecyclerView = findViewById<RecyclerView>(R.id.permission_recycler_view)
         val permissionD = PermissionData(this)
         permissionD.populateData()
-        permissionD.enforceData()
         permissionRecyclerView.adapter = ItemAdapter(this,permissionD, PermissionPrefManager(this))
         val permissionRefresh = findViewById<androidx.swiperefreshlayout.widget.SwipeRefreshLayout>(R.id.permission_refresh_layout)
         permissionRefresh.setOnRefreshListener {
