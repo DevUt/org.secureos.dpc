@@ -98,10 +98,10 @@ class DeviceAdmin : DeviceAdminReceiver() {
             setPassIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             context.applicationContext.startActivity(setPassIntent)
 
-            GlobalScope.launch {
+            runBlocking {
                 if(dpm.passwordComplexity != dpm.requiredPasswordComplexity){
-                    Thread.sleep(60000)
-                    Toast.makeText(context, "BRUH2", Toast.LENGTH_SHORT).show()
+                    Thread.sleep(6000)
+//                    Toast.makeText(context, "BRUH2", Toast.LENGTH_SHORT).show()
                     enablePasswordPolicy(context)
                 }
             }
