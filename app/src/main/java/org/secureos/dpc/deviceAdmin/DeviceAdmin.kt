@@ -36,16 +36,16 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "Starting to enforce Password policy")
         enablePasswordPolicy(context.applicationContext)
         Log.d(TAG, "Success in setting password policy")
-        Log.d(TAG, "Starting to enforce Package policy")
-        enablePackagePolicy(context.applicationContext)
-        Log.d(TAG, "Enforced package policy")
+//        Log.d(TAG, "Starting to enforce Package policy")
+//        enablePackagePolicy(context.applicationContext)
+//        Log.d(TAG, "Enforced package policy")
         Log.d(TAG, "Starting to enforce Permission policy")
         // Wait on permission Policy
         enablePermissionPolicy(context.applicationContext)
         Log.d(TAG, "Enforced permission policy")
-        Log.d(TAG, "Starting to enforce camera Policy")
-        enableCameraPolicy(context.applicationContext)
-        Log.d(TAG, "Enforced Camera Policy")
+//        Log.d(TAG, "Starting to enforce camera Policy")
+//        enableCameraPolicy(context.applicationContext)
+//        Log.d(TAG, "Enforced Camera Policy")
     }
 
     private fun enablePackagePolicy(context: Context) {

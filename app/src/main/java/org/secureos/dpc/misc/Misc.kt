@@ -16,21 +16,21 @@ class Misc : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_misc)
-        val cameraSwitch =
-            findViewById<com.google.android.material.switchmaterial.SwitchMaterial>(R.id.camera_switch)
-        var currCameraStatus: Int?
-        runBlocking {
-            currCameraStatus = MiscPrefManager(this@Misc).readEnabled("camera")
-        }
-        if (currCameraStatus != null) {
-            cameraSwitch.isChecked = (currCameraStatus == 1)
-        }
-        cameraSwitch.setOnClickListener {
-            runBlocking {
-                val writeCameraD = MiscPrefManager(this@Misc)
-                writeCameraD.writeEnabled("camera", (cameraSwitch.isChecked).toInt())
-            }
-        }
+//        val cameraSwitch =
+//            findViewById<com.google.android.material.switchmaterial.SwitchMaterial>(R.id.camera_switch)
+//        var currCameraStatus: Int?
+//        runBlocking {
+//            currCameraStatus = MiscPrefManager(this@Misc).readEnabled("camera")
+//        }
+//        if (currCameraStatus != null) {
+//            cameraSwitch.isChecked = (currCameraStatus == 1)
+//        }
+//        cameraSwitch.setOnClickListener {
+//            runBlocking {
+//                val writeCameraD = MiscPrefManager(this@Misc)
+//                writeCameraD.writeEnabled("camera", (cameraSwitch.isChecked).toInt())
+//            }
+//        }
 
         val saveButton: Button = findViewById(R.id.misc_save)
         val minWipeTries: com.google.android.material.textfield.TextInputEditText =
@@ -47,7 +47,7 @@ class Misc : AppCompatActivity() {
                     )
                 }
             }
-
+            Toast.makeText(this,"Saved Settings",Toast.LENGTH_SHORT).show()
         }
         runBlocking {
             val wipeRetriesD = MiscPrefManager(this@Misc).readEnabled("wipe_retries")
