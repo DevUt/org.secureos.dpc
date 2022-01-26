@@ -22,29 +22,29 @@
     <!--        app:layout_constraintVertical_bias="0.437" />-->
 
 
-<!--    <Button-->
-<!--        android:id="@+id/go_to_package_page"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="60dp"-->
-<!--        android:layout_margin="0dp"-->
-<!--        android:background="@drawable/buttons"-->
-<!--        android:text="@string/manage_packages"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="15sp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    <Button-->
+    <!--        android:id="@+id/go_to_package_page"-->
+    <!--        android:layout_width="250dp"-->
+    <!--        android:layout_height="60dp"-->
+    <!--        android:layout_margin="0dp"-->
+    <!--        android:background="@drawable/buttons"-->
+    <!--        android:text="@string/manage_packages"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="15sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
 
-<!--        app:layout_constraintHorizontal_bias="0.496"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.454" />-->
+    <!--        app:layout_constraintHorizontal_bias="0.496"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintVertical_bias="0.454" />-->
 
     <Button
         android:id="@+id/go_to_misc_page"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_margin="0dp"
-        android:background="@drawable/buttons"
+        android:background="#545780"
         android:text="Misc"
         android:textColor="@color/white"
         android:textSize="15sp"
@@ -60,7 +60,7 @@
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_margin="0dp"
-        android:background="@drawable/buttons"
+        android:background="#545780"
         android:text="@string/manage_permissions"
         android:textColor="@color/white"
         android:textSize="15sp"
@@ -76,26 +76,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/protection"
-        android:textColor="#753a88"
+        android:textColor="#ffffff"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.341" />
+        app:layout_constraintVertical_bias="0.328" />
 
     <TextView
         android:id="@+id/ASP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/advanced_system"
-        android:textColor="#753a88"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.305" />
+        app:layout_constraintVertical_bias="0.254" />
+
+    <ImageView
+        android:id="@+id/main_logo"
+        android:layout_width="115dp"
+        android:layout_height="110dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@mipmap/ic_launcher_foreground"
+        tools:layout_editor_absoluteY="66dp" />
 
 
     <!--        <Button-->

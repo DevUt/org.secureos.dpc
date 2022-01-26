@@ -67,26 +67,29 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/password_length"
             android:background="@drawable/gradient_background"
-            app:hintTextColor="@color/white"
-            android:textColorHint="@color/white"
+            android:hint="@string/password_length"
             android:paddingTop="20dp"
-            android:textAlignment="viewStart">
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:hintTextColor="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_wipe_length"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/buttons"
+                android:background="#545780"
                 android:inputType="numberDecimal"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:textColor="@color/white"
 
-                android:text="5"/>
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                android:text="5"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -95,7 +98,7 @@
         android:id="@+id/misc_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/buttons"
+        android:background="#545780"
         android:padding="10dp"
         android:text="Save Settings"
         android:textColor="@color/white"
