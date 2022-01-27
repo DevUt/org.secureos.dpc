@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             if(miscPrefManager.readEnabled("enforced")==2){
                 val enforcedIntent = Intent(this@MainActivity, MainEnforced::class.java)
                 this@MainActivity.startActivity(enforcedIntent)
+                finish();
             }
         }
         val permissionPage: Button = findViewById(R.id.go_to_permission_page)
@@ -58,6 +59,18 @@ class MainActivity : AppCompatActivity() {
             val deviceObj = DeviceAdmin()
             deviceObj.enforcePolicy(this)
             finish()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val miscPrefManager = MiscPrefManager(this)
+        runBlocking {
+            if(miscPrefManager.readEnabled("enforced")==2){
+                val enforcedIntent = Intent(this@MainActivity, MainEnforced::class.java)
+                this@MainActivity.startActivity(enforcedIntent)
+                finish();
+            }
         }
     }
 }
