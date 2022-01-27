@@ -32,26 +32,18 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Toast.makeText(context, "DeviceAdmin enabled", Toast.LENGTH_SHORT).show()
         initialize(context.applicationContext)
     }
-
-    override fun onDisabled(context: Context, intent: Intent) {
-        super.onDisabled(context, intent)
-        Toast.makeText(context, "DeviceAdmin disabled", Toast.LENGTH_SHORT).show()
-        Log.d(TAG,"disabled")
-        runBlocking {
-            MiscPrefManager(context.applicationContext).writeEnabled("enforced",1)
-        }
-    }
-    fun initialize(context: Context){
+    private fun initialize(context: Context){
         dpm = context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         cn = ComponentName(context.applicationContext, DeviceAdmin::class.java)
     }
 
-    private fun isAdmin() : Boolean{
+    private fun isAdmin(context: Context) : Boolean{
+        initialize(context.applicationContext)
         return dpm.isAdminActive(cn)
     }
 
     fun enforcePolicy(context: Context) : Boolean{
-        if(!isAdmin()){
+        if(!isAdmin(context.applicationContext)){
             Toast.makeText(context.applicationContext,"Currently not a device admin",Toast.LENGTH_LONG).show()
             return false
         }
@@ -118,6 +110,8 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "Checking compliance to Password standards")
         dpm.setPasswordQuality(cn,DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
         dpm.setPasswordMinimumLength(cn,20)
+        dpm.setPasswordMinimumUpperCase(cn,1)
+        dpm.setPasswordMinimumLowerCase(cn,1)
         if (!dpm.isActivePasswordSufficient) {
             Toast.makeText(context, "Set a better password", Toast.LENGTH_LONG).show()
             val setPassIntent = Intent(DevicePolicyManager.ACTION_SET_NEW_PASSWORD)

@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     companion object{
         const val TAG = "MainActivity"
     }
-    @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,7 +37,8 @@ class MainActivity : AppCompatActivity() {
         val miscPrefManager = MiscPrefManager(this)
         runBlocking {
             if(miscPrefManager.readEnabled("enforced")==2){
-                setContentView(R.layout.activity_main_enforcer)
+                val enforcedIntent = Intent(this@MainActivity, MainEnforced::class.java)
+                this@MainActivity.startActivity(enforcedIntent)
             }
         }
         val permissionPage: Button = findViewById(R.id.go_to_permission_page)
@@ -47,15 +47,17 @@ class MainActivity : AppCompatActivity() {
             this.startActivity(permissionIntent)
         }
         PermissionData(this).populateData().enforceData()
+
         val miscPage: Button = findViewById(R.id.go_to_misc_page)
         miscPage.setOnClickListener{
             val  miscIntent = Intent(this, Misc::class.java)
             this.startActivity(miscIntent)
         }
-        val logoEnable : ImageView = findViewById(R.id.main_logo_enforced)
+        val logoEnable : ImageView = findViewById(R.id.main_logo)
         logoEnable.setOnClickListener {
             val deviceObj = DeviceAdmin()
             deviceObj.enforcePolicy(this)
+            finish()
         }
     }
 }

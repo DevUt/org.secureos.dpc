@@ -18,6 +18,9 @@
         android:testOnly="false"
         android:theme="@style/Theme.FirstTestDPM">
         <activity
+            android:name=".MainEnforced"
+            android:exported="false" />
+        <activity
             android:name=".misc.Misc"
             android:exported="false" />
         <activity
