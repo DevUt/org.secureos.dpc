@@ -7,7 +7,8 @@
     android:background="@drawable/gradient_background"
     tools:context="org.secureos.dpc.MainActivity"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="-15dp">
+    tools:layout_editor_absoluteY="-15dp"
+    tools:ignore="MissingClass">
 
     <!--    <TextView-->
     <!--        android:id="@+id/go_to_package_page"-->
@@ -53,7 +54,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.688" />
+        app:layout_constraintVertical_bias="0.734" />
 
     <Button
         android:id="@+id/go_to_permission_page"
@@ -69,21 +70,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
-
-    <TextView
-        android:id="@+id/ASP2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/protection"
-        android:textColor="#ffffff"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
+        app:layout_constraintVertical_bias="0.584" />
 
     <TextView
         android:id="@+id/ASP"
@@ -94,22 +81,34 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.254" />
+        app:layout_constraintVertical_bias="0.403" />
+
+    <TextView
+        android:id="@+id/ASP2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/protection"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.46" />
 
     <ImageView
         android:id="@+id/main_logo"
         android:layout_width="115dp"
         android:layout_height="110dp"
+        android:contentDescription="@string/logo"
         app:layout_constraintBottom_toTopOf="@+id/ASP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.636"
-        app:srcCompat="@mipmap/ic_launcher_foreground"
-        android:contentDescription="@string/logo" />
+        app:layout_constraintVertical_bias="0.835"
+        app:srcCompat="@mipmap/ic_launcher_foreground" />
 
 
     <!--        <Button-->
@@ -123,5 +122,6 @@
     <!--        app:layout_constraintStart_toStartOf="parent"-->
     <!--        app:layout_constraintTop_toTopOf="parent"-->
     <!--        app:layout_constraintVertical_bias="0.652" />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
