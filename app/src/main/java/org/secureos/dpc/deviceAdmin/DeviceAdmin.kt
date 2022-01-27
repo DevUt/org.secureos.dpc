@@ -32,6 +32,14 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Toast.makeText(context, "DeviceAdmin enabled", Toast.LENGTH_SHORT).show()
         initialize(context.applicationContext)
     }
+
+    override fun onDisabled(context: Context, intent: Intent) {
+        super.onDisabled(context, intent)
+        Log.d(TAG,"disabled")
+        runBlocking {
+            MiscPrefManager(context.applicationContext).writeEnabled("enforced",1)
+        }
+    }
     private fun initialize(context: Context){
         dpm = context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         cn = ComponentName(context.applicationContext, DeviceAdmin::class.java)
