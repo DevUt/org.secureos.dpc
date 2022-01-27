@@ -36,10 +36,12 @@ class MainActivity : AppCompatActivity() {
 //        }
         val miscPrefManager = MiscPrefManager(this)
         runBlocking {
-            if(miscPrefManager.readEnabled("enforced")==2){
-                val enforcedIntent = Intent(this@MainActivity, MainEnforced::class.java)
-                this@MainActivity.startActivity(enforcedIntent)
-                finish();
+            if(DeviceAdmin().isAdmin(this@MainActivity)) {
+                if (miscPrefManager.readEnabled("enforced") == 2) {
+                    val enforcedIntent = Intent(this@MainActivity, MainEnforced::class.java)
+                    this@MainActivity.startActivity(enforcedIntent)
+                    finish();
+                }
             }
         }
         val permissionPage: Button = findViewById(R.id.go_to_permission_page)
@@ -57,7 +59,9 @@ class MainActivity : AppCompatActivity() {
         val logoEnable : ImageView = findViewById(R.id.main_logo)
         logoEnable.setOnClickListener {
             val deviceObj = DeviceAdmin()
-            deviceObj.enforcePolicy(this)
+            if(deviceObj.isAdmin(this)) {
+                deviceObj.enforcePolicy(this)
+            }
             finish()
         }
     }
@@ -66,10 +70,12 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         val miscPrefManager = MiscPrefManager(this)
         runBlocking {
-            if(miscPrefManager.readEnabled("enforced")==2){
-                val enforcedIntent = Intent(this@MainActivity, MainEnforced::class.java)
-                this@MainActivity.startActivity(enforcedIntent)
-                finish();
+            if(DeviceAdmin().isAdmin(this@MainActivity)) {
+                if (miscPrefManager.readEnabled("enforced") == 2) {
+                    val enforcedIntent = Intent(this@MainActivity, MainEnforced::class.java)
+                    this@MainActivity.startActivity(enforcedIntent)
+                    finish();
+                }
             }
         }
     }
