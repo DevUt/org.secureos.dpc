@@ -45,7 +45,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
         cn = ComponentName(context.applicationContext, DeviceAdmin::class.java)
     }
 
-    private fun isAdmin(context: Context) : Boolean{
+    fun isAdmin(context: Context) : Boolean{
         initialize(context.applicationContext)
         return dpm.isAdminActive(cn)
     }
