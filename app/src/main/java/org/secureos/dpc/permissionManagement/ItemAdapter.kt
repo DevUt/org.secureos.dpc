@@ -35,17 +35,17 @@ class ItemAdapter(
         holder.permissionName.text = item.first
         runBlocking {
             val itemRead = permissionPref.readPermEnabled(item.first)
-            holder.disableCheck.isChecked = !(itemRead == null || itemRead == 0 || itemRead == 1)
+            holder.disableCheck.isChecked = itemRead == 2
 
         }
         holder.disableCheck.setOnClickListener {
             if (holder.disableCheck.isChecked) {
                 runBlocking {
-                    permissionPref.writePermEnabled(item.first, 1)
+                    permissionPref.writePermEnabled(item.first, 2)
                 }
             } else {
                 runBlocking {
-                    permissionPref.writePermEnabled(item.first, 2)
+                    permissionPref.writePermEnabled(item.first, 1)
                 }
             }
         }

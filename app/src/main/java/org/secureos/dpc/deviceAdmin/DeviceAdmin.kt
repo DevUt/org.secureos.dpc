@@ -30,8 +30,22 @@ class DeviceAdmin : DeviceAdminReceiver() {
         super.onEnabled(context, intent)
         Log.d(TAG, "enabled")
         Toast.makeText(context, "DeviceAdmin enabled", Toast.LENGTH_SHORT).show()
+        initialize(context.applicationContext)
+    }
+    fun initialize(context: Context){
         dpm = context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         cn = ComponentName(context.applicationContext, DeviceAdmin::class.java)
+    }
+
+    private fun isAdmin() : Boolean{
+        return dpm.isAdminActive(cn)
+    }
+
+    fun enforcePolicy(context: Context) : Boolean{
+        if(!isAdmin()){
+            Toast.makeText(context.applicationContext,"Currently not a device admin",Toast.LENGTH_LONG).show()
+            return false
+        }
         Log.d(TAG, "Starting to enforce Policy")
         Log.d(TAG, "Starting to enforce Password policy")
         enablePasswordPolicy(context.applicationContext)
@@ -46,8 +60,12 @@ class DeviceAdmin : DeviceAdminReceiver() {
 //        Log.d(TAG, "Starting to enforce camera Policy")
 //        enableCameraPolicy(context.applicationContext)
 //        Log.d(TAG, "Enforced Camera Policy")
+        val miscPrefManager = MiscPrefManager(context.applicationContext)
+        runBlocking {
+            miscPrefManager.writeEnabled("enforced",2)
+        }
+        return true
     }
-
     private fun enablePackagePolicy(context: Context) {
         Log.d(TAG, "Enabling Package Policy")
         val packagePref = PackagePrefManager(context)

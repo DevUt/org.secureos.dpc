@@ -103,11 +103,13 @@
         android:id="@+id/main_logo"
         android:layout_width="115dp"
         android:layout_height="110dp"
+        app:layout_constraintBottom_toTopOf="@+id/ASP"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.636"
         app:srcCompat="@mipmap/ic_launcher_foreground"
-        tools:layout_editor_absoluteY="66dp" />
+        android:contentDescription="@string/logo" />
 
 
     <!--        <Button-->
