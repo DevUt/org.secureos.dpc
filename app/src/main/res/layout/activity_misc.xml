@@ -88,7 +88,7 @@
                 android:paddingEnd="5dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="15dp"
-                android:text="5"
+                android:text="7"
                 android:textAlignment="center"
                 android:textColor="@color/white" />
         </com.google.android.material.textfield.TextInputLayout>

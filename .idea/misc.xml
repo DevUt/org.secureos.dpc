@@ -27,6 +27,10 @@
         <entry key="..\:/Users/nisar/Desktop/testdpm/testdpm/app/src/main/res/layout/package_list_item.xml" value="0.37626628075253254" />
         <entry key="..\:/Users/nisar/Desktop/testdpm/testdpm/app/src/main/res/layout/permission_layout.xml" value="0.11775362318840579" />
         <entry key="..\:/Users/nisar/Desktop/testdpm/testdpm/app/src/main/res/layout/permission_list_item.xml" value="0.4466666666666667" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.24270833333333333" />
+        <entry key="app/src/main/res/layout/activity_misc.xml" value="0.3645833333333333" />
+        <entry key="app/src/main/res/layout/permission_layout.xml" value="0.3645833333333333" />
+        <entry key="app/src/main/res/layout/permission_list_item.xml" value="0.3645833333333333" />
       </map>
     </option>
   </component>
