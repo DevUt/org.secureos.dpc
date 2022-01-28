@@ -2,6 +2,7 @@ package org.secureos.dpc.misc
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.runBlocking
@@ -41,6 +42,26 @@ class Misc : AppCompatActivity() {
             findViewById(R.id.spl_char)
         val minNum: com.google.android.material.textfield.TextInputEditText =
             findViewById(R.id.min_num)
+        runBlocking {
+            findViewById<TextView>(R.id.password_wipe_length).text = MiscPrefManager(this@Misc).readEnabled("wipe_retries")
+                ?.toString()
+                ?: "7"
+            findViewById<TextView>(R.id.min_password).text = MiscPrefManager(this@Misc).readEnabled("min_length")
+                ?.toString()
+                ?: "20"
+            findViewById<TextView>(R.id.min_caps).text = MiscPrefManager(this@Misc).readEnabled("min_uppercase")
+                ?.toString()
+                ?: "1"
+            findViewById<TextView>(R.id.min_lower).text = MiscPrefManager(this@Misc).readEnabled("min_lowercase")
+                ?.toString()
+                ?: "1"
+            findViewById<TextView>(R.id.spl_char).text = MiscPrefManager(this@Misc).readEnabled("min_special")
+                ?.toString()
+                ?: "1"
+            findViewById<TextView>(R.id.min_num).text = MiscPrefManager(this@Misc).readEnabled("min_number")
+                ?.toString()
+                ?: "1"
+        }
         saveButton.setOnClickListener {
             if (minWipeTries.text.toString().isNullOrBlank() ||
                 minPasswordLength.text.toString().isNullOrBlank() ||
@@ -50,7 +71,6 @@ class Misc : AppCompatActivity() {
                 minNum.text.toString().isNullOrBlank()
             ) {
                 Toast.makeText(this, "Text Field Can't be empty", Toast.LENGTH_LONG).show()
-                recreate()
             } else {
                 runBlocking {
                     val miscPrefManager = MiscPrefManager(this@Misc)
