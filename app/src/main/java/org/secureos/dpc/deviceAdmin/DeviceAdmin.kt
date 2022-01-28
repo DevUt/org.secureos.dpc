@@ -70,9 +70,9 @@ class DeviceAdmin : DeviceAdminReceiver() {
 //        Log.d(TAG, "Starting to enforce camera Policy")
 //        enableCameraPolicy(context.applicationContext)
 //        Log.d(TAG, "Enforced Camera Policy")
-        Log.d(TAG, "Starting to enforce VPN Policy")
-        enableVpnPolicy(context.applicationContext)
-        Log.d(TAG, "Enforced VPN Policy")
+//        Log.d(TAG, "Starting to enforce VPN Policy")
+//        enableVpnPolicy(context.applicationContext)
+//        Log.d(TAG, "Enforced VPN Policy")
         val miscPrefManager = MiscPrefManager(context.applicationContext)
         runBlocking {
             miscPrefManager.writeEnabled("enforced", 2)

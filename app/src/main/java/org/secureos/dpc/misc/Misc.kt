@@ -31,7 +31,7 @@ class Misc : AppCompatActivity() {
 
         val saveButton: Button = findViewById(R.id.misc_save)
         val minWipeTries: com.google.android.material.textfield.TextInputEditText =
-            findViewById(R.id.password_wipe_length)
+            findViewById(R.id.wipe_retries)
         val minPasswordLength: com.google.android.material.textfield.TextInputEditText =
             findViewById(R.id.min_password)
         val minCaps: com.google.android.material.textfield.TextInputEditText =
