@@ -41,16 +41,16 @@ class ItemAdapter(
             if (itemRead != null)
                 Log.i("PackageItem", item.packageName + " " + itemRead.toString())
             if (itemRead == 0 || itemRead == null) {
-                holder.disableCheck.isChecked = item.enabled
-            } else holder.disableCheck.isChecked = itemRead == 1
+                holder.disableCheck.isChecked = !item.enabled
+            } else holder.disableCheck.isChecked = itemRead == 2
         }
         // 0-> not set 1-> enabled 2-> disabled
         holder.disableCheck.setOnClickListener {
             runBlocking {
                 if (holder.disableCheck.isChecked) {
-                    packagePref.writeEnabled(item.packageName, 1)
-                } else {
                     packagePref.writeEnabled(item.packageName, 2)
+                } else {
+                    packagePref.writeEnabled(item.packageName, 1)
                 }
             }
         }

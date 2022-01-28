@@ -8,16 +8,12 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.util.Log
 import android.widget.Toast
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.secureos.dpc.misc.MiscPrefManager
 import org.secureos.dpc.packageManagement.PackageData
 import org.secureos.dpc.packageManagement.PackagePrefManager
 import org.secureos.dpc.permissionManagement.PermissionData
 import org.secureos.dpc.permissionManagement.PermissionPrefManager
-import java.util.*
-import kotlin.concurrent.schedule
 
 class DeviceAdmin : DeviceAdminReceiver() {
     companion object {
@@ -35,33 +31,38 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
     override fun onDisabled(context: Context, intent: Intent) {
         super.onDisabled(context, intent)
-        Log.d(TAG,"disabled")
+        Log.d(TAG, "disabled")
         runBlocking {
-            MiscPrefManager(context.applicationContext).writeEnabled("enforced",1)
+            MiscPrefManager(context.applicationContext).writeEnabled("enforced", 1)
         }
     }
-    private fun initialize(context: Context){
+
+    private fun initialize(context: Context) {
         dpm = context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         cn = ComponentName(context.applicationContext, DeviceAdmin::class.java)
     }
 
-    fun isAdmin(context: Context) : Boolean{
+    fun isAdmin(context: Context): Boolean {
         initialize(context.applicationContext)
         return dpm.isAdminActive(cn)
     }
 
-    fun enforcePolicy(context: Context) : Boolean{
-        if(!isAdmin(context.applicationContext)){
-            Toast.makeText(context.applicationContext,"Currently not a device admin",Toast.LENGTH_LONG).show()
+    fun enforcePolicy(context: Context): Boolean {
+        if (!isAdmin(context.applicationContext)) {
+            Toast.makeText(
+                context.applicationContext,
+                "Currently not a device admin",
+                Toast.LENGTH_LONG
+            ).show()
             return false
         }
         Log.d(TAG, "Starting to enforce Policy")
         Log.d(TAG, "Starting to enforce Password policy")
         enablePasswordPolicy(context.applicationContext)
         Log.d(TAG, "Success in setting password policy")
-//        Log.d(TAG, "Starting to enforce Package policy")
-//        enablePackagePolicy(context.applicationContext)
-//        Log.d(TAG, "Enforced package policy")
+        Log.d(TAG, "Starting to enforce Package policy")
+        enablePackagePolicy(context.applicationContext)
+        Log.d(TAG, "Enforced package policy")
         Log.d(TAG, "Starting to enforce Permission policy")
         // Wait on permission Policy
         enablePermissionPolicy(context.applicationContext)
@@ -71,10 +72,11 @@ class DeviceAdmin : DeviceAdminReceiver() {
 //        Log.d(TAG, "Enforced Camera Policy")
         val miscPrefManager = MiscPrefManager(context.applicationContext)
         runBlocking {
-            miscPrefManager.writeEnabled("enforced",2)
+            miscPrefManager.writeEnabled("enforced", 2)
         }
         return true
     }
+
     private fun enablePackagePolicy(context: Context) {
         Log.d(TAG, "Enabling Package Policy")
         val packagePref = PackagePrefManager(context)
@@ -116,10 +118,10 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
     private fun enablePasswordPolicy(context: Context) {
         Log.d(TAG, "Checking compliance to Password standards")
-        dpm.setPasswordQuality(cn,DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
-        dpm.setPasswordMinimumLength(cn,20)
-        dpm.setPasswordMinimumUpperCase(cn,1)
-        dpm.setPasswordMinimumLowerCase(cn,1)
+        dpm.setPasswordQuality(cn, DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
+        dpm.setPasswordMinimumLength(cn, 20)
+        dpm.setPasswordMinimumUpperCase(cn, 1)
+        dpm.setPasswordMinimumLowerCase(cn, 1)
         if (!dpm.isActivePasswordSufficient) {
             Toast.makeText(context, "Set a better password", Toast.LENGTH_LONG).show()
             val setPassIntent = Intent(DevicePolicyManager.ACTION_SET_NEW_PASSWORD)
@@ -141,7 +143,6 @@ class DeviceAdmin : DeviceAdminReceiver() {
         dpm.setMaximumFailedPasswordsForWipe(cn, maxWipeTries ?: 0)
         Log.d(TAG, "Successfully Set Maximum Failed Password Limit")
     }
-
 
 
 }

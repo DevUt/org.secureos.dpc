@@ -3,8 +3,9 @@ package org.secureos.dpc.packageManagement
 import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
+import kotlinx.coroutines.runBlocking
 
-class PackageData(val context : Context,extraSpecification : Int,val includeSystemApps : Boolean){
+class PackageData(val context : Context, extraSpecification : Int, private val includeSystemApps : Boolean){
     private val packages = mutableListOf<ApplicationInfo>()
     private val packageList : List<ApplicationInfo> = context.packageManager.getInstalledApplications(extraSpecification)
 
@@ -21,5 +22,11 @@ class PackageData(val context : Context,extraSpecification : Int,val includeSyst
         packages.sortBy { it.loadLabel(context.packageManager).toString() }
         return packages
     }
-
+    fun enforceDefaults(){
+        runBlocking {
+            val packageObj = PackagePrefManager(context.applicationContext)
+            packageObj.writeEnabled("com.android.dialer.binary.aosp.AospDialerApplication",2)
+            packageObj.writeEnabled("com.android.messaging.BugleApplication",2)
+        }
+    }
 }
