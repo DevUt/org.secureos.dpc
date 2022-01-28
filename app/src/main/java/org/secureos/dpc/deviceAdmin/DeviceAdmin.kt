@@ -70,6 +70,9 @@ class DeviceAdmin : DeviceAdminReceiver() {
 //        Log.d(TAG, "Starting to enforce camera Policy")
 //        enableCameraPolicy(context.applicationContext)
 //        Log.d(TAG, "Enforced Camera Policy")
+        Log.d(TAG, "Starting to enforce VPN Policy")
+        enableVpnPolicy(context.applicationContext)
+        Log.d(TAG, "Enforced VPN Policy")
         val miscPrefManager = MiscPrefManager(context.applicationContext)
         runBlocking {
             miscPrefManager.writeEnabled("enforced", 2)
@@ -144,5 +147,13 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "Successfully Set Maximum Failed Password Limit")
     }
 
-
+    private fun enableVpnPolicy(context: Context) {
+        Log.d(TAG, "Enabling VPN Policy")
+        val miscPref = MiscPrefManager(context)
+        runBlocking {
+            //if (miscPref.readEnabled("vpn_always") == 1) {
+                dpm.setAlwaysOnVpnPackage(cn , "com.wireguard.android",true )
+            //}
+        }
+    }
 }
