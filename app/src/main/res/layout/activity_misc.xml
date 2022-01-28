@@ -248,6 +248,44 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/min_num_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spl_char_password">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_background"
+            android:hint="Minimum Number"
+            android:paddingTop="20dp"
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/min_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#545780"
+                android:inputType="numberDecimal"
+
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 
 
