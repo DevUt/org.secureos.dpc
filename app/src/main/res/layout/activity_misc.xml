@@ -56,6 +56,7 @@
 <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
 <!--    </com.google.android.material.card.MaterialCardView>-->
 
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/password_wipe_length_card"
         android:layout_width="match_parent"
@@ -94,6 +95,180 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/min_password_length"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/password_wipe_length_card">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_background"
+            android:hint="@string/minimum_length"
+            android:paddingTop="20dp"
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/min_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#545780"
+                android:inputType="numberDecimal"
+
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                android:text="20"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/min_caps_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/min_password_length">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_background"
+            android:hint="@string/minimum_upper_case"
+            android:paddingTop="20dp"
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/min_caps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#545780"
+                android:inputType="numberDecimal"
+
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/min_lower_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/min_caps_password">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_background"
+            android:hint="@string/minimum_lower_case"
+            android:paddingTop="20dp"
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/min_lower"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#545780"
+                android:inputType="numberDecimal"
+
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/spl_char_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/min_lower_password">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient_background"
+            android:hint="@string/minimum_special_characters"
+            android:paddingTop="20dp"
+            android:textAlignment="viewStart"
+            android:textColorHint="@color/white"
+            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+            app:hintTextColor="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/spl_char"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#545780"
+                android:inputType="numberDecimal"
+
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="5dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                android:text="1"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <Button
         android:id="@+id/misc_save"
         android:layout_width="wrap_content"
@@ -104,8 +279,9 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password_wipe_length_card"
-        app:layout_constraintVertical_bias="0.22" />
+        app:layout_constraintVertical_bias="0.902" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

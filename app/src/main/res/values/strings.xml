@@ -13,4 +13,10 @@
     <string name="package_icon">Package Icon</string>
     <string name="logo">Logo</string>
     <string name="active_and_protecting">Active And Protecting</string>
+    <string name="minimum_length">Minimum Length</string>
+    <string name="_20">20</string>
+    <string name="_5">5</string>
+    <string name="minimum_upper_case">Minimum Upper Case</string>
+    <string name="minimum_lower_case">Minimum Lower Case</string>
+    <string name="minimum_special_characters">Minimum Special Characters</string>
 </resources>
