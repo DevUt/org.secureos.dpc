@@ -35,11 +35,22 @@ class Misc : AppCompatActivity() {
         val saveButton: Button = findViewById(R.id.misc_save)
         val minWipeTries: com.google.android.material.textfield.TextInputEditText =
             findViewById(R.id.password_wipe_length)
+        val minPasswordLength: com.google.android.material.textfield.TextInputEditText =
+            findViewById(R.id.min_password)
+        val minCaps: com.google.android.material.textfield.TextInputEditText =
+            findViewById(R.id.min_caps)
+        val minLower: com.google.android.material.textfield.TextInputEditText =
+            findViewById(R.id.min_lower)
+        val minSpecial: com.google.android.material.textfield.TextInputEditText =
+            findViewById(R.id.spl_char)
         saveButton.setOnClickListener {
             if (minWipeTries.text.toString().isNullOrBlank()) {
                 Toast.makeText(this, "Text Field Can't be empty", Toast.LENGTH_LONG).show()
                 recreate()
-            } else {
+            } else if (minPasswordLength.text.toString().isNullOrBlank()||minCaps.text.toString().isNullOrBlank()||minLower.text.toString().isNullOrBlank()||minSpecial.text.toString().isNullOrBlank()) {
+                Toast.makeText(this, "Text Field Can't be empty", Toast.LENGTH_LONG).show()
+                recreate()
+            }else {
                 runBlocking {
                     MiscPrefManager(this@Misc).writeEnabled(
                         "wipe_retries",
@@ -56,6 +67,23 @@ class Misc : AppCompatActivity() {
             } else {
                 minWipeTries.setText(wipeRetriesD.toString())
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
 
     }
