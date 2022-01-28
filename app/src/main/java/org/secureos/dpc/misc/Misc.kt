@@ -1,15 +1,11 @@
 package org.secureos.dpc.misc
 
-import android.content.Context
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.runBlocking
-import org.secureos.dpc.MainActivity
 import org.secureos.dpc.R
-import java.security.AccessControlContext
 
 
 class Misc : AppCompatActivity() {
@@ -43,47 +39,48 @@ class Misc : AppCompatActivity() {
             findViewById(R.id.min_lower)
         val minSpecial: com.google.android.material.textfield.TextInputEditText =
             findViewById(R.id.spl_char)
+        val minNum: com.google.android.material.textfield.TextInputEditText =
+            findViewById(R.id.min_num)
         saveButton.setOnClickListener {
-            if (minWipeTries.text.toString().isNullOrBlank()) {
+            if (minWipeTries.text.toString().isNullOrBlank() ||
+                minPasswordLength.text.toString().isNullOrBlank() ||
+                minCaps.text.toString().isNullOrBlank() ||
+                minLower.text.toString().isNullOrBlank() ||
+                minSpecial.text.toString().isNullOrBlank() ||
+                minNum.text.toString().isNullOrBlank()
+            ) {
                 Toast.makeText(this, "Text Field Can't be empty", Toast.LENGTH_LONG).show()
                 recreate()
-            } else if (minPasswordLength.text.toString().isNullOrBlank()||minCaps.text.toString().isNullOrBlank()||minLower.text.toString().isNullOrBlank()||minSpecial.text.toString().isNullOrBlank()) {
-                Toast.makeText(this, "Text Field Can't be empty", Toast.LENGTH_LONG).show()
-                recreate()
-            }else {
+            } else {
                 runBlocking {
-                    MiscPrefManager(this@Misc).writeEnabled(
+                    val miscPrefManager = MiscPrefManager(this@Misc)
+                    miscPrefManager.writeEnabled(
                         "wipe_retries",
                         minWipeTries.text.toString().toInt()
                     )
+                    miscPrefManager.writeEnabled(
+                        "min_length",
+                        minPasswordLength.text.toString().toInt()
+                    )
+                    miscPrefManager.writeEnabled(
+                        "min_uppercase",
+                        minCaps.text.toString().toInt()
+                    )
+                    miscPrefManager.writeEnabled(
+                        "min_lowercase",
+                        minLower.text.toString().toInt()
+                    )
+                    miscPrefManager.writeEnabled(
+                        "min_special",
+                        minSpecial.text.toString().toInt()
+                    )
+                    miscPrefManager.writeEnabled(
+                        "min_number",
+                        minNum.text.toString().toInt()
+                    )
                 }
             }
-            Toast.makeText(this,"Saved Settings",Toast.LENGTH_SHORT).show()
-        }
-        runBlocking {
-            val wipeRetriesD = MiscPrefManager(this@Misc).readEnabled("wipe_retries")
-            if (wipeRetriesD == 0) {
-                minWipeTries.setText("5")
-            } else {
-                minWipeTries.setText(wipeRetriesD.toString())
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            Toast.makeText(this, "Saved Settings", Toast.LENGTH_SHORT).show()
         }
 
     }

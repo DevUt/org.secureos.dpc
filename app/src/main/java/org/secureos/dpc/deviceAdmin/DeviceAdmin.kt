@@ -121,14 +121,43 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
     private fun enablePasswordPolicy(context: Context) {
         Log.d(TAG, "Checking compliance to Password standards")
-        dpm.setPasswordQuality(cn, DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
-        dpm.setPasswordMinimumLength(cn, 20)
-        dpm.setPasswordMinimumUpperCase(cn, 1)
-        dpm.setPasswordMinimumLowerCase(cn, 1)
+        runBlocking {
+            dpm.setPasswordQuality(cn, DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
+            dpm.setPasswordMinimumLength(
+                cn, MiscPrefManager(context.applicationContext).readEnabled("wipe_retries")
+                    ?.toInt()
+                    ?: 7
+            )
+            dpm.setPasswordMinimumUpperCase(
+                cn,
+                MiscPrefManager(context.applicationContext).readEnabled("min_length")
+                    ?.toInt()
+                    ?: 20
+            )
+            dpm.setPasswordMinimumLowerCase(
+                cn,
+                MiscPrefManager(context.applicationContext).readEnabled("min_uppercase")
+                    ?.toInt()
+                    ?: 1
+            )
+
+            dpm.setPasswordMinimumLowerCase(cn,MiscPrefManager(context.applicationContext).readEnabled("min_lowercase")
+                ?.toInt()
+                ?: 1
+            )
+            dpm.setPasswordMinimumSymbols(cn,MiscPrefManager(context.applicationContext).readEnabled("min_special")
+                ?.toInt()
+                ?: 1
+            )
+            dpm.setPasswordMinimumNumeric(cn,MiscPrefManager(context.applicationContext).readEnabled("min_number")
+                ?.toInt()
+                ?: 1
+            )
+        }
         if (!dpm.isActivePasswordSufficient) {
             Toast.makeText(context, "Set a better password", Toast.LENGTH_LONG).show()
             val setPassIntent = Intent(DevicePolicyManager.ACTION_SET_NEW_PASSWORD)
-            setPassIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            setPassIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.applicationContext.startActivity(setPassIntent)
 
 //            runBlocking {
@@ -149,10 +178,10 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
     private fun enableVpnPolicy(context: Context) {
         Log.d(TAG, "Enabling VPN Policy")
-        val miscPref = MiscPrefManager(context)
+//        val miscPref = MiscPrefManager(context)
         runBlocking {
             //if (miscPref.readEnabled("vpn_always") == 1) {
-                dpm.setAlwaysOnVpnPackage(cn , "com.wireguard.android",true )
+            dpm.setAlwaysOnVpnPackage(cn, "com.wireguard.android", true)
             //}
         }
     }
