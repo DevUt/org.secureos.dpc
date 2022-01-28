@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.runBlocking
 import org.secureos.dpc.deviceAdmin.DeviceAdmin
 import org.secureos.dpc.misc.Misc
+import org.secureos.dpc.misc.MiscData
 import org.secureos.dpc.misc.MiscPrefManager
 import org.secureos.dpc.packageManagement.PackageActivity
 import org.secureos.dpc.packageManagement.PackageData
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
         PermissionData(this).populateData().enforceData()
         PackageData(this, PackageManager.MATCH_DISABLED_COMPONENTS, true).enforceDefaults()
+        MiscData(this).enforceDefaults()
         val miscPage: Button = findViewById(R.id.go_to_misc_page)
         miscPage.setOnClickListener {
             val miscIntent = Intent(this, Misc::class.java)
