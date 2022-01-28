@@ -43,24 +43,24 @@ class Misc : AppCompatActivity() {
         val minNum: com.google.android.material.textfield.TextInputEditText =
             findViewById(R.id.min_num)
         runBlocking {
-            findViewById<TextView>(R.id.password_wipe_length).text = MiscPrefManager(this@Misc).readEnabled("wipe_retries")
+            minWipeTries.setText(MiscPrefManager(this@Misc).readEnabled("wipe_retries")
                 ?.toString()
-                ?: "7"
-            findViewById<TextView>(R.id.min_password).text = MiscPrefManager(this@Misc).readEnabled("min_length")
+                ?: "7")
+            minPasswordLength.setText( MiscPrefManager(this@Misc).readEnabled("min_length")
                 ?.toString()
-                ?: "20"
-            findViewById<TextView>(R.id.min_caps).text = MiscPrefManager(this@Misc).readEnabled("min_uppercase")
+                ?: "20")
+            minCaps.setText(MiscPrefManager(this@Misc).readEnabled("min_uppercase")
                 ?.toString()
-                ?: "1"
-            findViewById<TextView>(R.id.min_lower).text = MiscPrefManager(this@Misc).readEnabled("min_lowercase")
+                ?: "1")
+            minLower.setText(MiscPrefManager(this@Misc).readEnabled("min_lowercase")
                 ?.toString()
-                ?: "1"
-            findViewById<TextView>(R.id.spl_char).text = MiscPrefManager(this@Misc).readEnabled("min_special")
+                ?: "1")
+            minSpecial.setText(MiscPrefManager(this@Misc).readEnabled("min_special")
                 ?.toString()
-                ?: "1"
-            findViewById<TextView>(R.id.min_num).text = MiscPrefManager(this@Misc).readEnabled("min_number")
+                ?: "1")
+            minNum.setText(MiscPrefManager(this@Misc).readEnabled("min_number")
                 ?.toString()
-                ?: "1"
+                ?: "1")
         }
         saveButton.setOnClickListener {
             if (minWipeTries.text.toString().isNullOrBlank() ||
