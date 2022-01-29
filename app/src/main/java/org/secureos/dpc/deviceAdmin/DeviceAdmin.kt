@@ -84,12 +84,14 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "Enabling Package Policy")
         val packagePref = PackagePrefManager(context)
         val packageList =
-            PackageData(context, PackageManager.MATCH_DISABLED_COMPONENTS, false).returnData()
+            PackageData(context, PackageManager.MATCH_DISABLED_COMPONENTS, true).returnData()
         for (app in packageList) {
             runBlocking {
                 if (packagePref.readEnabled(app.packageName) == 2) {
                     dpm.setApplicationHidden(cn, app.packageName, true)
                     Log.d(TAG, "Disabled " + app.packageName?.toString())
+                }else{
+                    Log.d(TAG, "Left " + app.packageName?.toString())
                 }
             }
         }
