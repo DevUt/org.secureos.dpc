@@ -17,6 +17,12 @@ class PackageData(val context : Context, extraSpecification : Int, private val i
                     continue
                 }
             }
+            runBlocking {
+                var enableStatus = 1
+                if(!app.enabled)
+                    enableStatus = 2
+                PackagePrefManager(context.applicationContext).writeEnabled(app.packageName,enableStatus)
+            }
             packages.add(app)
         }
         packages.sortBy { it.loadLabel(context.packageManager).toString() }
@@ -27,6 +33,17 @@ class PackageData(val context : Context, extraSpecification : Int, private val i
             val packageObj = PackagePrefManager(context.applicationContext)
             packageObj.writeEnabled("com.android.dialer.binary.aosp.AospDialerApplication",2)
             packageObj.writeEnabled("com.android.messaging.BugleApplication",2)
+            packageObj.writeEnabled("com.android.egg",2)
+            packageObj.writeEnabled("com.android.captiveportallogin",2)
+            packageObj.writeEnabled("com.android.documentsui",2)
+            packageObj.writeEnabled("com.android.messaging",2)
+            packageObj.writeEnabled("com.android.dialer",2)
+            packageObj.writeEnabled("com.android.server.telecom",2)
+            packageObj.writeEnabled("com.android.providers.telephony",2)
+            packageObj.writeEnabled("com.android.talkback",2)
+            packageObj.writeEnabled("com.android.cellbroadcastreceiver.module",2)
+            packageObj.writeEnabled("com.android.cellbroadcastservice",2)
         }
     }
+    fun Boolean.toInt() = if(this) 1 else 0
 }

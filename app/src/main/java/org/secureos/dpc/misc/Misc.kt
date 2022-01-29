@@ -2,7 +2,6 @@ package org.secureos.dpc.misc
 
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.runBlocking
@@ -63,12 +62,12 @@ class Misc : AppCompatActivity() {
                 ?: "1")
         }
         saveButton.setOnClickListener {
-            if (minWipeTries.text.toString().isNullOrBlank() ||
-                minPasswordLength.text.toString().isNullOrBlank() ||
-                minCaps.text.toString().isNullOrBlank() ||
-                minLower.text.toString().isNullOrBlank() ||
-                minSpecial.text.toString().isNullOrBlank() ||
-                minNum.text.toString().isNullOrBlank()
+            if (minWipeTries.text.toString().isBlank() ||
+                minPasswordLength.text.toString().isBlank() ||
+                minCaps.text.toString().isBlank() ||
+                minLower.text.toString().isBlank() ||
+                minSpecial.text.toString().isBlank() ||
+                minNum.text.toString().isBlank()
             ) {
                 Toast.makeText(this, "Text Field Can't be empty", Toast.LENGTH_LONG).show()
             } else {
@@ -104,7 +103,5 @@ class Misc : AppCompatActivity() {
         }
 
     }
-
-    private fun Boolean.toInt() = if (this) 1 else 0
 
 }
