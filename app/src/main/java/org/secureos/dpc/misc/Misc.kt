@@ -2,6 +2,7 @@ package org.secureos.dpc.misc
 
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.runBlocking
@@ -27,7 +28,7 @@ class Misc : AppCompatActivity() {
 //                writeCameraD.writeEnabled("camera", (cameraSwitch.isChecked).toInt())
 //            }
 //        }
-
+        //TODO(Make a binding instead of this ugliness)
         val saveButton: Button = findViewById(R.id.misc_save)
         val minWipeTries: com.google.android.material.textfield.TextInputEditText =
             findViewById(R.id.wipe_retries)
@@ -41,6 +42,8 @@ class Misc : AppCompatActivity() {
             findViewById(R.id.spl_char)
         val minNum: com.google.android.material.textfield.TextInputEditText =
             findViewById(R.id.min_num)
+        val vpnOnCheck : CheckBox = findViewById(R.id.vpn_check)
+        val vpnLockdown : CheckBox = findViewById(R.id.vpn_lockdown_check)
         runBlocking {
             minWipeTries.setText(MiscPrefManager(this@Misc).readEnabled("wipe_retries")
                 ?.toString()
@@ -60,6 +63,15 @@ class Misc : AppCompatActivity() {
             minNum.setText(MiscPrefManager(this@Misc).readEnabled("min_number")
                 ?.toString()
                 ?: "1")
+
+        }
+        vpnOnCheck.setOnClickListener {
+            if(vpnOnCheck.isChecked){
+                vpnLockdown.isClickable = true
+            }else{
+                vpnLockdown.isChecked = false
+                vpnLockdown.isClickable = false
+            }
         }
         saveButton.setOnClickListener {
             if (minWipeTries.text.toString().isBlank() ||
@@ -97,6 +109,27 @@ class Misc : AppCompatActivity() {
                         "min_number",
                         minNum.text.toString().toInt()
                     )
+                    if(vpnOnCheck.isChecked) {
+                        miscPrefManager.writeEnabled(
+                            "vpn_always",
+                            2
+                        )
+                    }else{
+                        miscPrefManager.writeEnabled(
+                            "vpn_always",
+                            1
+                        )
+                        miscPrefManager.writeEnabled(
+                            "vpn_lockdown",
+                            1
+                        )
+                    }
+                    if(vpnLockdown.isClickable && vpnLockdown.isChecked){
+                        miscPrefManager.writeEnabled(
+                            "vpn_lockdown",
+                            2
+                        )
+                    }
                 }
             }
             Toast.makeText(this, "Saved Settings", Toast.LENGTH_SHORT).show()

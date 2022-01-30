@@ -22,4 +22,11 @@
     <string name="save_settings">Save Settings</string>
     <string name="allow_traffic_without_vpn">Allow Traffic Without VPN</string>
     <string name="vpn_always_on">VPN Always on</string>
+    <string name="max_wipe_retries">7</string>
+    <string name="password_length_text">20</string>
+    <string name="min_caps_text">1</string>
+    <string name="min_lower_text">1</string>
+    <string name="min_spl_char_text">1</string>
+    <string name="minimum_number_text">Minimum Number</string>
+    <string name="min_num_text">1</string>
 </resources>

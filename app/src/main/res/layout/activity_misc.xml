@@ -1,406 +1,397 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/save_curr_settings"
-    android:background="@drawable/gradient_background"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    >
-
-<!--    <com.google.android.material.card.MaterialCardView-->
-<!--        android:id="@+id/camera_card"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="8dp"-->
-<!--        android:layout_marginRight="8dp"-->
-<!--        android:layout_marginTop="100dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent">-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:id="@+id/camera_constraint_layout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@drawable/item_list_background"-->
-<!--            android:paddingTop="15dp"-->
-<!--            android:paddingBottom="15dp">-->
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/disable_camera_text"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="20dp"-->
-<!--                android:text="@string/disable_camera"-->
-<!--                android:textColor="@color/white"-->
-<!--                android:textSize="20sp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toStartOf="@id/camera_switch"-->
-<!--                app:layout_constraintHorizontal_bias="0.0"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.2" />-->
-
-<!--            <com.google.android.material.switchmaterial.SwitchMaterial-->
-<!--                android:id="@+id/camera_switch"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="10dp"-->
-<!--                android:background="@drawable/stroke"-->
-<!--                android:importantForAccessibility="no"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-<!--    </com.google.android.material.card.MaterialCardView>-->
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/password_wipe_length_card"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/save_curr_settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@drawable/gradient_background">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_background"
-            android:hint="@string/password_length"
-            android:paddingTop="20dp"
-            android:textAlignment="viewStart"
-            android:textColorHint="@color/white"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
-            app:hintTextColor="@color/white">
+        <!--    <com.google.android.material.card.MaterialCardView-->
+        <!--        android:id="@+id/camera_card"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginLeft="8dp"-->
+        <!--        android:layout_marginRight="8dp"-->
+        <!--        android:layout_marginTop="100dp"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="parent">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/wipe_retries"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#545780"
-                android:inputType="numberDecimal"
-
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="5"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/min_password_length"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/password_wipe_length_card">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_background"
-            android:hint="@string/minimum_length"
-            android:paddingTop="20dp"
-            android:textAlignment="viewStart"
-            android:textColorHint="@color/white"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
-            app:hintTextColor="@color/white">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/min_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#545780"
-                android:inputType="numberDecimal"
-
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="20"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/min_caps_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/min_password_length">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_background"
-            android:hint="@string/minimum_upper_case"
-            android:paddingTop="20dp"
-            android:textAlignment="viewStart"
-            android:textColorHint="@color/white"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
-            app:hintTextColor="@color/white">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/min_caps"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#545780"
-                android:inputType="numberDecimal"
-
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="1"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </com.google.android.material.card.MaterialCardView>
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--            android:id="@+id/camera_constraint_layout"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="@drawable/item_list_background"-->
+        <!--            android:paddingTop="15dp"-->
+        <!--            android:paddingBottom="15dp">-->
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/min_lower_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/min_caps_password">
+        <!--            <TextView-->
+        <!--                android:id="@+id/disable_camera_text"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginStart="20dp"-->
+        <!--                android:text="@string/disable_camera"-->
+        <!--                android:textColor="@color/white"-->
+        <!--                android:textSize="20sp"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintEnd_toStartOf="@id/camera_switch"-->
+        <!--                app:layout_constraintHorizontal_bias="0.0"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent"-->
+        <!--                app:layout_constraintVertical_bias="0.2" />-->
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_background"
-            android:hint="@string/minimum_lower_case"
-            android:paddingTop="20dp"
-            android:textAlignment="viewStart"
-            android:textColorHint="@color/white"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
-            app:hintTextColor="@color/white">
+        <!--            <com.google.android.material.switchmaterial.SwitchMaterial-->
+        <!--                android:id="@+id/camera_switch"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:layout_marginEnd="10dp"-->
+        <!--                android:background="@drawable/stroke"-->
+        <!--                android:importantForAccessibility="no"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/min_lower"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#545780"
-                android:inputType="numberDecimal"
+        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--    </com.google.android.material.card.MaterialCardView>-->
 
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="1"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-        </com.google.android.material.textfield.TextInputLayout>
 
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/spl_char_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/min_lower_password">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_background"
-            android:hint="@string/minimum_special_characters"
-            android:paddingTop="20dp"
-            android:textAlignment="viewStart"
-            android:textColorHint="@color/white"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
-            app:hintTextColor="@color/white">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/spl_char"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#545780"
-                android:inputType="numberDecimal"
-
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="1"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/min_num_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spl_char_password">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient_background"
-            android:hint="Minimum Number"
-            android:paddingTop="20dp"
-            android:textAlignment="viewStart"
-            android:textColorHint="@color/white"
-            app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
-            app:hintTextColor="@color/white">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/min_num"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#545780"
-                android:inputType="numberDecimal"
-
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="5dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="15dp"
-                android:text="1"
-                android:textAlignment="center"
-                android:textColor="@color/white" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/min_num_password"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="36dp"
-        android:id="@+id/VPN_box">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/VPN_check_box"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/password_wipe_length_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal_700"
-            android:padding="10dp">
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_background"
+                android:hint="@string/password_length"
+                android:paddingTop="20dp"
+                android:textAlignment="viewStart"
+                android:textColorHint="@color/white"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+                app:hintTextColor="@color/white">
 
-            <TextView
-                android:id="@+id/vpn_on_off"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/disable_check"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.512"
-                android:text="@string/vpn_always_on" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/wipe_retries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#545780"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/max_wipe_retries"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <CheckBox
-                android:id="@+id/disable_check"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        </com.google.android.material.card.MaterialCardView>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/VPN_box"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="36dp"
-        android:id="@+id/allow_traffic_box">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/Allow_traffic_check_box"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/min_password_length"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal_700"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/password_wipe_length_card">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_background"
+                android:hint="@string/minimum_length"
+                android:paddingTop="20dp"
+                android:textAlignment="viewStart"
+                android:textColorHint="@color/white"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+                app:hintTextColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/min_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#545780"
+                    android:inputType="numberDecimal"
+
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/password_length_text"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/min_caps_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/min_password_length">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_background"
+                android:hint="@string/minimum_upper_case"
+                android:paddingTop="20dp"
+                android:textAlignment="viewStart"
+                android:textColorHint="@color/white"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+                app:hintTextColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/min_caps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#545780"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/min_caps_text"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/min_lower_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/min_caps_password">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_background"
+                android:hint="@string/minimum_lower_case"
+                android:paddingTop="20dp"
+                android:textAlignment="viewStart"
+                android:textColorHint="@color/white"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+                app:hintTextColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/min_lower"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#545780"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/min_lower_text"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/spl_char_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/min_lower_password">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_background"
+                android:hint="@string/minimum_special_characters"
+                android:paddingTop="20dp"
+                android:textAlignment="viewStart"
+                android:textColorHint="@color/white"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+                app:hintTextColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/spl_char"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#545780"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/min_spl_char_text"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/min_num_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spl_char_password">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/gradient_background"
+                android:hint="@string/minimum_number_text"
+                android:paddingTop="20dp"
+                android:textAlignment="viewStart"
+                android:textColorHint="@color/white"
+                app:hintTextAppearance="@style/TextAppearance.AppCompat.Large"
+                app:hintTextColor="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/min_num"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#545780"
+                    android:inputType="numberDecimal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingEnd="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="15dp"
+                    android:text="@string/min_num_text"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/VPN_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toBottomOf="@id/min_num_password">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/vpn_check_constraint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/teal_700"
+                android:padding="10dp">
+
+
+                <TextView
+                    android:id="@+id/vpn_on_off"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vpn_always_on"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/vpn_check"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.512" />
+
+                <CheckBox
+                    android:id="@+id/vpn_check"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:checked="true"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/allow_traffic_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toBottomOf="@id/VPN_box">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/allow_traffic_check_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/teal_700"
+                android:padding="10dp">
+
+
+                <TextView
+                    android:id="@+id/allow_traffic_without_vpn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/allow_traffic_without_vpn"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/vpn_lockdown_check"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.512" />
+
+                <CheckBox
+                    android:id="@+id/vpn_lockdown_check"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:checked="true"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/misc_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="100dp"
+            android:background="#545780"
             android:padding="10dp"
-            >
+            android:text="@string/save_settings"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/allow_traffic_box" />
 
-
-            <TextView
-                android:id="@+id/allow_traffic_without_vpn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/traffic_checkbox"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.512"
-                android:text="@string/allow_traffic_without_vpn" />
-
-            <CheckBox
-                android:id="@+id/traffic_checkbox"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <Button
-        android:id="@+id/misc_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#545780"
-        android:padding="10dp"
-        android:text="@string/save_settings"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/allow_traffic_box"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="100dp"/>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

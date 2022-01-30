@@ -1,8 +1,8 @@
 package org.secureos.dpc
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.runBlocking
 import org.secureos.dpc.deviceAdmin.DeviceAdmin
 import org.secureos.dpc.misc.MiscPrefManager
@@ -12,10 +12,10 @@ class MainEnforced : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_enforcer)
         val deviceObj = DeviceAdmin()
-        if(!deviceObj.isAdmin(this)){
+        if (!deviceObj.isAdmin(this)) {
             runBlocking {
-                MiscPrefManager(this@MainEnforced).writeEnabled("enforced",1)
-                startActivity(Intent(this@MainEnforced,MainActivity::class.java))
+                MiscPrefManager(this@MainEnforced).writeEnabled("enforced", 1)
+                startActivity(Intent(this@MainEnforced, MainActivity::class.java))
             }
         }
     }

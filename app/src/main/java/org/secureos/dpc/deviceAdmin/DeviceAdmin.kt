@@ -93,7 +93,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
                 if (packagePref.readEnabled(app.packageName) == 2) {
                     dpm.setApplicationHidden(cn, app.packageName, true)
                     Log.d(TAG, "Disabled " + app.packageName?.toString())
-                }else{
+                } else {
                     Log.d(TAG, "Left " + app.packageName?.toString())
                 }
             }
@@ -184,10 +184,13 @@ class DeviceAdmin : DeviceAdminReceiver() {
         val packageD = PackageData(context, PackageManager.MATCH_DISABLED_COMPONENTS, true)
         packageD.returnData()
         runBlocking {
-            if (PackagePrefManager(context).readEnabled(vpnPackageName) == 1)
-                dpm.setAlwaysOnVpnPackage(cn, vpnPackageName, true)
-            else
-                Toast.makeText(context, "Vpn package not found", Toast.LENGTH_SHORT).show()
+            if (MiscPrefManager(context).readEnabled("vpn_always") == 2) {
+                if (PackagePrefManager(context).readEnabled(vpnPackageName) == 1) {
+                    val vpnLockdown =  MiscPrefManager(context).readEnabled("vpn_lockdown") == 2
+                    dpm.setAlwaysOnVpnPackage(cn, vpnPackageName, vpnLockdown)
+                } else
+                    Toast.makeText(context, "Vpn package not found", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

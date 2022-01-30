@@ -14,6 +14,8 @@ class MiscData(context: Context) {
             miscPrefManager.writeEnabled("min_lowercase",1)
             miscPrefManager.writeEnabled("min_special",1)
             miscPrefManager.writeEnabled("min_number",1)
+            miscPrefManager.writeEnabled("vpn_always",2)
+            miscPrefManager.writeEnabled("vpn_lockdown",2)
         }
     }
 }

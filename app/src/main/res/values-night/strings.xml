@@ -2,4 +2,6 @@
 <resources>
     <string name="package_icon">Package Icon</string>
     <string name="active_and_protecting">Active And Protecting</string>
+    <string name="max_wipe_retries">7</string>
+    <string name="password_length_text">20</string>
 </resources>
