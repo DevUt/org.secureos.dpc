@@ -40,7 +40,7 @@ class ItemAdapter(
         if(unBannablePackageList.contains(item.packageName)){
             Log.d(TAG,"unbannable " + item.packageName)
             holder.disableCheck.isChecked = false
-            holder.disableCheck.isClickable = true
+            holder.disableCheck.isClickable = false
             return
         }
         holder.disableCheck.isChecked = item.enabled
