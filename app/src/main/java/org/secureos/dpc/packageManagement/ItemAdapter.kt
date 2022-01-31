@@ -43,6 +43,7 @@ class ItemAdapter(
             holder.disableCheck.isClickable = false
             return
         }
+        holder.disableCheck.isClickable = true
         holder.disableCheck.isChecked = item.enabled
         // 0-> not set 1-> enabled 2-> disabled
         runBlocking {
