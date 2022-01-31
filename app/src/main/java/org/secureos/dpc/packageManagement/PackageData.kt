@@ -58,6 +58,11 @@ class PackageData(
             packageObj.writeEnabled("com.android.talkback", 2)
             packageObj.writeEnabled("com.android.cellbroadcastreceiver.module", 2)
             packageObj.writeEnabled("com.android.cellbroadcastservice", 2)
+//            packageObj.writeEnabled("com.android.providers.contacts",2)
+//            packageObj.writeEnabled("com.android.providers.telephony",2)
+//            packageObj.writeEnabled("com.android.server.telecom",2)
+//            packageObj.writeEnabled("com.android.phone",2)
+
         }
     }
 
