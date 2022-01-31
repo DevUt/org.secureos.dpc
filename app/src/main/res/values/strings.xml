@@ -6,7 +6,7 @@
     <string name="manage_permissions">Manage Permissions</string>
     <string name="todo">TODO</string>
     <string name="disable_camera">Disable Camera</string>
-    <string name="password_length">Max Retries before Auto-Reset</string>
+    <string name="password_length">Max Retries before Factory Reset</string>
     <string name="advanced_system_protection">Advanced System Protection</string>
     <string name="advanced_system">Advanced System</string>
     <string name="protection">Protection</string>
