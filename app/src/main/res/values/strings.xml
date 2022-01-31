@@ -20,7 +20,7 @@
     <string name="minimum_lower_case">Minimum Lower Case</string>
     <string name="minimum_special_characters">Minimum Special Characters</string>
     <string name="save_settings">Save Settings</string>
-    <string name="allow_traffic_without_vpn">Allow Traffic Without VPN</string>
+    <string name="allow_traffic_without_vpn">Do Not Allow Traffic Without VPN</string>
     <string name="vpn_always_on">VPN Always on</string>
     <string name="max_wipe_retries">7</string>
     <string name="password_length_text">20</string>

@@ -61,6 +61,8 @@ class PackageData(
             packageObj.writeEnabled("com.android.captiveportallogin", 1) // setting this will break SystemUI
         }
     }
-
+    fun unBannableList() : List<String>{
+        return listOf("com.android.captiveportallogin","com.android.captiveportallogin","org.secureos.dpc")
+    }
     fun Boolean.toInt() = if (this) 1 else 0
 }

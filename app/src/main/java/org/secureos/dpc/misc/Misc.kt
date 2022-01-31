@@ -69,7 +69,7 @@ class Misc : AppCompatActivity() {
             vpnOnCheck.isChecked = MiscPrefManager(this@Misc).readEnabled("vpn_always") == 2
             if(vpnOnCheck.isChecked){
                 vpnLockdown.isClickable = true
-                vpnLockdown.isChecked = MiscPrefManager(this@Misc).readEnabled("vpn_lockdown") == 1
+                vpnLockdown.isChecked = MiscPrefManager(this@Misc).readEnabled("vpn_lockdown") == 2
             }else{
                 vpnLockdown.isChecked = false
                 vpnLockdown.isClickable = false

@@ -16,7 +16,8 @@ import org.secureos.dpc.R
 class ItemAdapter(
     private val packageList: MutableList<ApplicationInfo>,
     private val packagePref: PackagePrefManager,
-    private val pm: PackageManager
+    private val pm: PackageManager,
+    private val unBannablePackageList: List<String>
 ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val packageName: TextView = view.findViewById(R.id.package_name)
@@ -32,9 +33,14 @@ class ItemAdapter(
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val item = packageList[position]
-        holder.disableCheck.isChecked = item.enabled
         holder.packageName.text = item.loadLabel(pm).toString()
         holder.packageIcon.setImageDrawable(item.loadIcon(pm))
+        if(unBannablePackageList.contains(item.packageName)){
+            holder.disableCheck.isChecked = false
+            holder.disableCheck.isClickable = false
+            return
+        }
+        holder.disableCheck.isChecked = item.enabled
         // 0-> not set 1-> enabled 2-> disabled
         runBlocking {
             val itemRead = packagePref.readEnabled(item.packageName)
