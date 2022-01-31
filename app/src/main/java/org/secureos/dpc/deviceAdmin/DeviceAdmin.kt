@@ -128,16 +128,16 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "Checking compliance to Password standards")
         runBlocking {
             dpm.setPasswordQuality(cn, DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
-            dpm.setPasswordMinimumLength(
+            dpm.setMaximumFailedPasswordsForWipe(
                 cn, MiscPrefManager(context.applicationContext).readEnabled("wipe_retries")
                     ?: 7
             )
-            dpm.setPasswordMinimumUpperCase(
+            dpm.setPasswordMinimumLength(
                 cn,
                 MiscPrefManager(context.applicationContext).readEnabled("min_length")
                     ?: 20
             )
-            dpm.setPasswordMinimumLowerCase(
+            dpm.setPasswordMinimumUpperCase(
                 cn,
                 MiscPrefManager(context.applicationContext).readEnabled("min_uppercase")
                     ?: 1
