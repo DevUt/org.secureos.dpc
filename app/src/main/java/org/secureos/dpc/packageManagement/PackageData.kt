@@ -62,7 +62,7 @@ class PackageData(
         }
     }
     fun unBannableList() : List<String>{
-        return listOf("com.android.captiveportallogin","com.android.captiveportallogin","org.secureos.dpc")
+        return listOf("com.android.captiveportallogin","com.android.providers.telephony","org.secureos.dpc")
     }
     fun Boolean.toInt() = if (this) 1 else 0
 }
