@@ -24,7 +24,9 @@ class ItemAdapter(
         val disableCheck: CheckBox = view.findViewById(R.id.disable_check)
         val packageIcon: ImageView = view.findViewById(R.id.package_icon)
     }
-
+    companion object{
+        val TAG = "PackageItem"
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val adapterLayout =
             LayoutInflater.from(parent.context).inflate(R.layout.package_list_item, parent, false)
@@ -36,6 +38,7 @@ class ItemAdapter(
         holder.packageName.text = item.loadLabel(pm).toString()
         holder.packageIcon.setImageDrawable(item.loadIcon(pm))
         if(unBannablePackageList.contains(item.packageName)){
+            Log.d(TAG,"unbannable " + item.packageName)
             holder.disableCheck.isChecked = false
             holder.disableCheck.isClickable = false
             return
@@ -45,7 +48,7 @@ class ItemAdapter(
         runBlocking {
             val itemRead = packagePref.readEnabled(item.packageName)
             if (itemRead != null)
-                Log.i("PackageItem", item.packageName + " " + itemRead.toString())
+                Log.i(TAG, item.packageName + " " + itemRead.toString())
             if (itemRead == 0 || itemRead == null) {
                 holder.disableCheck.isChecked = !item.enabled
             } else holder.disableCheck.isChecked = itemRead == 2
