@@ -49,20 +49,16 @@ class PackageData(
             packageObj.writeEnabled("com.android.dialer.binary.aosp.AospDialerApplication", 2)
             packageObj.writeEnabled("com.android.messaging.BugleApplication", 2)
             packageObj.writeEnabled("com.android.egg", 2)
-            packageObj.writeEnabled("com.android.captiveportallogin", 2)
             packageObj.writeEnabled("com.android.documentsui", 2)
             packageObj.writeEnabled("com.android.messaging", 2)
             packageObj.writeEnabled("com.android.dialer", 2)
             packageObj.writeEnabled("com.android.server.telecom", 2)
-            packageObj.writeEnabled("com.android.providers.telephony", 2)
+            packageObj.writeEnabled("com.android.phone", 2)
             packageObj.writeEnabled("com.android.talkback", 2)
             packageObj.writeEnabled("com.android.cellbroadcastreceiver.module", 2)
             packageObj.writeEnabled("com.android.cellbroadcastservice", 2)
-//            packageObj.writeEnabled("com.android.providers.contacts",2)
-//            packageObj.writeEnabled("com.android.providers.telephony",2)
-//            packageObj.writeEnabled("com.android.server.telecom",2)
-//            packageObj.writeEnabled("com.android.phone",2)
-
+            packageObj.writeEnabled("com.android.providers.telephony", 1) // settings this will break SystemUI
+            packageObj.writeEnabled("com.android.captiveportallogin", 1) // setting this will break SystemUI
         }
     }
 

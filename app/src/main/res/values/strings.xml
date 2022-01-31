@@ -2,7 +2,7 @@
     <string name="app_name">ASP</string>
     <string name="app_title">Advanced System Protection</string>
     <string name="disable_switch">Disable</string>
-    <string name="manage_packages">Manage Packages</string>
+    <string name="manage_packages">Manage Apps</string>
     <string name="manage_permissions">Manage Permissions</string>
     <string name="todo">TODO</string>
     <string name="disable_camera">Disable Camera</string>
