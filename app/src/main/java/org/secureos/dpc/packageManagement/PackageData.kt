@@ -14,7 +14,7 @@ class PackageData(
     private val packageList: List<ApplicationInfo> =
         context.packageManager.getInstalledApplications(extraSpecification)
 
-    fun returnData(): MutableList<ApplicationInfo> {
+    fun returnData(includeBannableapps: Boolean = false): MutableList<ApplicationInfo> {
         for (app in packageList) {
             val systemPackage = "android"
             if (!includeSystemApps) {
@@ -37,6 +37,8 @@ class PackageData(
                     )
                 }
             }
+            if (!includeBannableapps && unBannableList().contains(app.packageName))
+                continue
             packages.add(app)
         }
         packages.sortBy { it.loadLabel(context.packageManager).toString() }
@@ -57,12 +59,24 @@ class PackageData(
             packageObj.writeEnabled("com.android.talkback", 2)
             packageObj.writeEnabled("com.android.cellbroadcastreceiver.module", 2)
             packageObj.writeEnabled("com.android.cellbroadcastservice", 2)
-            packageObj.writeEnabled("com.android.providers.telephony", 1) // settings this will break SystemUI
-            packageObj.writeEnabled("com.android.captiveportallogin", 1) // setting this will break SystemUI
+            packageObj.writeEnabled(
+                "com.android.providers.telephony",
+                1
+            ) // settings this will break SystemUI
+            packageObj.writeEnabled(
+                "com.android.captiveportallogin",
+                1
+            ) // setting this will break SystemUI
         }
     }
-    fun unBannableList() : List<String>{
-        return listOf("com.android.captiveportallogin","com.android.providers.telephony","org.secureos.dpc")
+
+    fun unBannableList(): List<String> {
+        return listOf(
+            "com.android.captiveportallogin",
+            "com.android.providers.telephony",
+            "org.secureos.dpc"
+        )
     }
+
     fun Boolean.toInt() = if (this) 1 else 0
 }
