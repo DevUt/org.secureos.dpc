@@ -9,11 +9,11 @@ class MiscData(context: Context) {
     fun enforceDefaults(){
         runBlocking {
             miscPrefManager.writeEnabled("wipe_retries",7)
-            miscPrefManager.writeEnabled("min_length",20)
-            miscPrefManager.writeEnabled("min_uppercase",1)
-            miscPrefManager.writeEnabled("min_lowercase",1)
-            miscPrefManager.writeEnabled("min_special",1)
-            miscPrefManager.writeEnabled("min_number",1)
+            miscPrefManager.writeEnabled("min_length",18)
+            miscPrefManager.writeEnabled("min_uppercase",4)
+            miscPrefManager.writeEnabled("min_lowercase",6)
+            miscPrefManager.writeEnabled("min_special",4)
+            miscPrefManager.writeEnabled("min_number",4)
             miscPrefManager.writeEnabled("vpn_always",2)
             miscPrefManager.writeEnabled("vpn_lockdown",2)
         }
