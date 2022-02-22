@@ -22,7 +22,9 @@ class EmergencyPolicyChange : BroadcastReceiver(){
             permissionPerfManager.writePermEnabled(UserManager.DISALLOW_MODIFY_ACCOUNTS,1);
         }
         Log.d(TAG,"Trying to enable Emergency Policy Permission Update")
-        DeviceAdmin().enablePermissionPolicy(context);
+        val emergencyPolicyEnforcement = DeviceAdmin()
+        emergencyPolicyEnforcement.initialize(context)
+        emergencyPolicyEnforcement.enablePermissionPolicy(context)
         Log.d(TAG,"Enabled Emergency Policy Permission Update")
     }
 }

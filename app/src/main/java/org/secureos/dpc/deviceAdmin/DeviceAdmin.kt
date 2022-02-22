@@ -37,7 +37,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
         }
     }
 
-    private fun initialize(context: Context) {
+    fun initialize(context: Context) {
         dpm = context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         cn = ComponentName(context.applicationContext, DeviceAdmin::class.java)
     }
