@@ -55,7 +55,7 @@ class PackageData(
             packageObj.writeEnabled("com.android.messaging", 2)
             packageObj.writeEnabled("com.android.dialer", 2)
             packageObj.writeEnabled("com.android.server.telecom", 2)
-            packageObj.writeEnabled("com.android.phone", 2)
+            packageObj.writeEnabled("com.android.phone", 1)
             packageObj.writeEnabled("com.android.talkback", 2)
             packageObj.writeEnabled("com.android.cellbroadcastreceiver.module", 2)
             packageObj.writeEnabled("com.android.cellbroadcastservice", 2)
@@ -74,7 +74,8 @@ class PackageData(
         return listOf(
             "com.android.captiveportallogin",
             "com.android.providers.telephony",
-            "org.secureos.dpc"
+            "org.secureos.dpc",
+            "com.android.phone"
         )
     }
 
