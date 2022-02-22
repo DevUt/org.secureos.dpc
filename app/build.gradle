@@ -10,8 +10,8 @@ android {
         applicationId "org.secureos.dpc"
         minSdk 31
         targetSdk 31
-        versionCode 1
-        versionName "2.0.20"
+        versionCode 22
+        versionName "2.0.22"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
