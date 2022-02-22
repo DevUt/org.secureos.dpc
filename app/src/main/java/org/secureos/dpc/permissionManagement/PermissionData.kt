@@ -28,7 +28,7 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_DEBUGGING_FEATURES,2))
         permissionList.add(Pair(UserManager.DISALLOW_USER_SWITCH,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_CELL_BROADCASTS,2))
-        permissionList.add(Pair(UserManager.DISALLOW_MODIFY_ACCOUNTS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_MODIFY_ACCOUNTS,1))
         permissionList.add(Pair(UserManager.DISALLOW_FACTORY_RESET,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_LOCATION,2))
 

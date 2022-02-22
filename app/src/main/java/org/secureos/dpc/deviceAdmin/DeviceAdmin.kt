@@ -100,7 +100,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
         }
     }
 
-    private fun enablePermissionPolicy(context: Context) {
+    fun enablePermissionPolicy(context: Context) {
         Log.d(TAG, "Enabling Permission Policy")
         val permissionD = PermissionData(context)
         val permissionPref = PermissionPrefManager(context)
