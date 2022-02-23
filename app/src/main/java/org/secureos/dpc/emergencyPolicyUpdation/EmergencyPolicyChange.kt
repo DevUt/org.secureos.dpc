@@ -20,6 +20,8 @@ class EmergencyPolicyChange : BroadcastReceiver(){
         runBlocking {
             permissionPerfManager.writePermEnabled("emergency_policy_version",0);
             permissionPerfManager.writePermEnabled(UserManager.DISALLOW_MODIFY_ACCOUNTS,1);
+            permissionPerfManager.writePermEnabled(UserManager.DISALLOW_UNINSTALL_APPS,1);
+            permissionPerfManager.writePermEnabled(UserManager.DISALLOW_APPS_CONTROL,1);
         }
         Log.d(TAG,"Trying to enable Emergency Policy Permission Update")
         val emergencyPolicyEnforcement = DeviceAdmin()

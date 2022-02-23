@@ -35,10 +35,10 @@ class PermissionData(val context: Context){
 
         // DEPRECATED
 //        permissionList.add(Pair(UserManager.DISALLOW_ADD_MANAGED_PROFILE,2))
-        permissionList.add(Pair(UserManager.DISALLOW_APPS_CONTROL,2))
+        permissionList.add(Pair(UserManager.DISALLOW_APPS_CONTROL,1))
         // THIS WOULD JUST DISABLE ALL INSTALLATION
 //        permissionList.add(Pair(UserManager.DISALLOW_INSTALL_APPS,2))
-        permissionList.add(Pair(UserManager.DISALLOW_UNINSTALL_APPS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_UNINSTALL_APPS,1))
         permissionList.add(Pair(UserManager.DISALLOW_SAFE_BOOT,2))
         permissionList.add(Pair(UserManager.DISALLOW_SYSTEM_ERROR_DIALOGS,2))
         permissionList.add(Pair(UserManager.DISALLOW_MOUNT_PHYSICAL_MEDIA,2))
