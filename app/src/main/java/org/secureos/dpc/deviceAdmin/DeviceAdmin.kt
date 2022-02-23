@@ -107,8 +107,11 @@ class DeviceAdmin : DeviceAdminReceiver() {
         permissionD.populateData()
         for (permissions in permissionD.returnData()) {
             runBlocking {
-                if (permissionPref.readPermEnabled(permissions.first) == 2) {
+                val permValue = permissionPref.readPermEnabled(permissions.first)
+                if (permValue == 2) {
                     dpm.addUserRestriction(cn, permissions.first)
+                }else if(permValue == 1){
+                    dpm.clearUserRestriction(cn,permissions.first)
                 }
             }
         }
