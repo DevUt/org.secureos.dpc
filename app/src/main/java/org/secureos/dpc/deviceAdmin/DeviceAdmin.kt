@@ -109,6 +109,12 @@ class DeviceAdmin : DeviceAdminReceiver() {
             runBlocking {
                 if (permissionPref.readPermEnabled(permissions.first) == 2) {
                     dpm.addUserRestriction(cn, permissions.first)
+                    Log.d(TAG,"Disabled " + permissions.first)
+                }else if(permissionPref.readPermEnabled(permissions.first) == 1){
+                    dpm.clearUserRestriction(cn,permissions.first)
+                    Log.d(TAG,"Enabled " + permissions.first)
+                }else{
+                    Log.d(TAG,"No action taken on " + permissions.first)
                 }
             }
         }
