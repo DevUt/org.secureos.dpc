@@ -5,6 +5,7 @@ on:
     branches:
       - testbringup
       - main
+      - master
       - icon
 
 jobs:
@@ -27,8 +28,8 @@ jobs:
       - name: Grant execute permission for gradelw
         run: chmod +x gradlew
       - name: Build debug apk
-        run: ./gradlew build
+        run: ./gradlew assembleDebug
       - uses: actions/upload-artifact@v1
         with:
           name : debug-apk
-          path : build/app/outputs/apk/debug/app-debug.apk
+          path : app/build/outputs/apk/debug/app-debug.apk
