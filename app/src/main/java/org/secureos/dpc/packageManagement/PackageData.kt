@@ -51,7 +51,7 @@ class PackageData(
             packageObj.writeEnabled("com.android.dialer.binary.aosp.AospDialerApplication", 2)
             packageObj.writeEnabled("com.android.messaging.BugleApplication", 2)
             packageObj.writeEnabled("com.android.egg", 2)
-            packageObj.writeEnabled("com.android.documentsui", 2)
+            packageObj.writeEnabled("com.android.documentsui", 1)
             packageObj.writeEnabled("com.android.messaging", 2)
             packageObj.writeEnabled("com.android.dialer", 2)
             packageObj.writeEnabled("com.android.server.telecom", 2)

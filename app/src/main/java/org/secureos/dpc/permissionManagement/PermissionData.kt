@@ -11,8 +11,8 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_BLUETOOTH,2))
         permissionList.add(Pair(UserManager.DISALLOW_BLUETOOTH_SHARING,2))
         permissionList.add(Pair(UserManager.DISALLOW_SHARE_LOCATION,2))
-        permissionList.add(Pair(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES,1))
-        permissionList.add(Pair(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY,1))
+        permissionList.add(Pair(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES,2))
+        permissionList.add(Pair(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY,2))
         permissionList.add(Pair(UserManager.DISALLOW_AUTOFILL,2))
         permissionList.add(Pair(UserManager.DISALLOW_FUN,2))
         permissionList.add(Pair(UserManager.DISALLOW_OUTGOING_CALLS,2))
@@ -28,17 +28,17 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_DEBUGGING_FEATURES,2))
         permissionList.add(Pair(UserManager.DISALLOW_USER_SWITCH,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_CELL_BROADCASTS,2))
-        permissionList.add(Pair(UserManager.DISALLOW_MODIFY_ACCOUNTS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_MODIFY_ACCOUNTS,1))
         permissionList.add(Pair(UserManager.DISALLOW_FACTORY_RESET,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_LOCATION,2))
 
 
         // DEPRECATED
 //        permissionList.add(Pair(UserManager.DISALLOW_ADD_MANAGED_PROFILE,2))
-        permissionList.add(Pair(UserManager.DISALLOW_APPS_CONTROL,2))
+        permissionList.add(Pair(UserManager.DISALLOW_APPS_CONTROL,1))
         // THIS WOULD JUST DISABLE ALL INSTALLATION
 //        permissionList.add(Pair(UserManager.DISALLOW_INSTALL_APPS,2))
-        permissionList.add(Pair(UserManager.DISALLOW_UNINSTALL_APPS,2))
+        permissionList.add(Pair(UserManager.DISALLOW_UNINSTALL_APPS,1))
         permissionList.add(Pair(UserManager.DISALLOW_SAFE_BOOT,2))
         permissionList.add(Pair(UserManager.DISALLOW_SYSTEM_ERROR_DIALOGS,2))
         permissionList.add(Pair(UserManager.DISALLOW_MOUNT_PHYSICAL_MEDIA,2))
