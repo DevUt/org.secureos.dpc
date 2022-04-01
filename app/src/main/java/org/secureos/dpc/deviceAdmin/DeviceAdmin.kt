@@ -186,7 +186,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
     private fun enableVpnPolicy(context: Context) {
         Log.d(TAG, "Enabling VPN Policy")
-        val vpnPackageName = "com.wireguard.android"
+        val vpnPackageName = "net.mullvad.mullvadvpn"
         val packageD = PackageData(context, PackageManager.MATCH_DISABLED_COMPONENTS, true)
         packageD.returnData()
         runBlocking {
