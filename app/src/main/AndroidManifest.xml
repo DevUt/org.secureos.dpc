@@ -18,6 +18,13 @@
         android:testOnly="false"
         android:theme="@style/Theme.FirstTestDPM">
         <activity
+            android:name=".emergencyIntercept.EmergencyInterception"
+            android:exported="false" />
+        <intent-filter>
+            <action android:name="com.android.systemui.action.LAUNCH_EMERGENCY"/>
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        <activity
             android:name=".MainEnforced"
             android:exported="false" />
         <activity
