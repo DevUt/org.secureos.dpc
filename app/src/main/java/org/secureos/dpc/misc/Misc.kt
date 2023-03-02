@@ -47,7 +47,7 @@ class Misc : AppCompatActivity() {
         val minNum: com.google.android.material.textfield.TextInputEditText =
             findViewById(R.id.min_num)
         val vpnOnCheck: CheckBox = findViewById(R.id.vpn_check)
-        val vpnSpinnerText: TextView = findViewById(R.id.vpn_option_text)
+
         val vpnLockdown: CheckBox = findViewById(R.id.vpn_lockdown_check)
         val dropdown = findViewById<Spinner>(R.id.vpn_spinner)
 
@@ -75,11 +75,6 @@ class Misc : AppCompatActivity() {
             )
             minNum.setText(
                 MiscPrefManager(this@Misc).readEnabled("min_number")?.toString() ?: "1"
-            )
-
-            vpnSpinnerText.setText(
-                MiscPrefManager(this@Misc).readEnabled("vpn_packageName")?.toString()
-                    ?: "com.wireguard.android"
             )
         }
         runBlocking {
