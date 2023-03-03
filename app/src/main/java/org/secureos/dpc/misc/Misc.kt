@@ -51,7 +51,17 @@ class Misc : AppCompatActivity() {
         val vpnLockdown: CheckBox = findViewById(R.id.vpn_lockdown_check)
         val dropdown = findViewById<Spinner>(R.id.vpn_spinner)
 
-        val items = arrayOf("com.wireguard.android", "net.mullvad.mullvadvpn")
+        val items = arrayOf("Wireguard",
+                            "Mullvad",
+                            "NordVPN",
+                            "SurfShark",
+                            "Cyber Ghost",
+                            "Proton",
+                            "IP Vanish",
+                            "StrongVPN",
+                            "Windscribe",
+                            "ExpressVPN",
+                            "OpenVPN")
         dropdown.adapter = ArrayAdapter(
             this, android.R.layout.simple_spinner_dropdown_item, items
         )
@@ -160,6 +170,15 @@ class Misc : AppCompatActivity() {
                     miscPrefManager.writeEnabled(
                         "vpn_packageName", when(vpnPackageName) {
                             "net.mullvad.mullvadvpn" -> 1
+                            "com.nordvpn.android" -> 2
+                            "com.surfshark.vpnclient.android" -> 3
+                            "de.mobileconcepts.cyberghost" -> 4
+                            "ch.protonvpn.android" -> 5
+                            "com.ixolit.ipvanish" -> 6
+                            "com.strongvpn" -> 7
+                            "com.windscribe.vpn" -> 8
+                            "com.expressvpn.vpn" -> 9
+                            "de.blinkt.openvpn" -> 10
                             else -> 0 // Default is WireGuard
                         }
                     )
