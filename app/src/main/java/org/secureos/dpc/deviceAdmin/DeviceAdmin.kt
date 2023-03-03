@@ -195,7 +195,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
                 Log.e(TAG, "Invalid vpn package order number defaulting to WireGuard")
                 vpnPackageName = "com.wireguard.android"
             } else {
-                when (vpnPackageOrder) {
+                vpnPackageName = when (vpnPackageOrder) {
                     0 -> "com.wireguard.android"
                     1 -> "net.mullvad.mullvadvpn"
                     2 -> "com.nordvpn.android"

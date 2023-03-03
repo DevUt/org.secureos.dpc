@@ -14,6 +14,7 @@ class Misc : AppCompatActivity() {
     companion object {
         const val TAG = "MiscActivity"
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_misc)
@@ -51,21 +52,23 @@ class Misc : AppCompatActivity() {
         val vpnLockdown: CheckBox = findViewById(R.id.vpn_lockdown_check)
         val dropdown = findViewById<Spinner>(R.id.vpn_spinner)
 
-        val items = arrayOf("Wireguard",
-                            "Mullvad",
-                            "NordVPN",
-                            "SurfShark",
-                            "Cyber Ghost",
-                            "Proton",
-                            "IP Vanish",
-                            "StrongVPN",
-                            "Windscribe",
-                            "ExpressVPN",
-                            "OpenVPN")
+        val items = arrayOf(
+            "Wireguard",
+            "Mullvad",
+            "NordVPN",
+            "SurfShark",
+            "Cyber Ghost",
+            "Proton",
+            "IP Vanish",
+            "StrongVPN",
+            "Windscribe",
+            "ExpressVPN",
+            "OpenVPN"
+        )
         dropdown.adapter = ArrayAdapter(
             this, android.R.layout.simple_spinner_dropdown_item, items
         )
-        var vpnPackageName  = "com.wireguard.android"
+        var vpnPackageName = "com.wireguard.android"
 
         runBlocking {
             minWipeTries.setText(
@@ -109,8 +112,7 @@ class Misc : AppCompatActivity() {
 
         dropdown.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
-                parent: AdapterView<*>, view: View?,
-                position: Int, id: Long
+                parent: AdapterView<*>, view: View?, position: Int, id: Long
             ) {
                 vpnPackageName = parent.getItemAtPosition(position) as String
                 Log.d(TAG, vpnPackageName)
@@ -119,6 +121,12 @@ class Misc : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
+        }
+
+        runBlocking {
+            val currentVpnPackageOrder =
+                MiscPrefManager(this@Misc).readEnabled("vpn_packageName") ?: 0
+            dropdown.setSelection(currentVpnPackageOrder)
         }
 
         saveButton.setOnClickListener {
@@ -168,7 +176,7 @@ class Misc : AppCompatActivity() {
                     }
 
                     miscPrefManager.writeEnabled(
-                        "vpn_packageName", when(vpnPackageName) {
+                        "vpn_packageName", when (vpnPackageName) {
                             "net.mullvad.mullvadvpn" -> 1
                             "com.nordvpn.android" -> 2
                             "com.surfshark.vpnclient.android" -> 3
