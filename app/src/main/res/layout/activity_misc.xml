@@ -412,6 +412,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/btn_dropdown"
+                    android:popupBackground="@color/white"
                     android:spinnerMode="dropdown"
                     app:layout_constraintBottom_toBottomOf="@id/vpn_option_text"
                     app:layout_constraintEnd_toEndOf="parent"

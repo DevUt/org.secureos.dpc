@@ -66,7 +66,7 @@ class Misc : AppCompatActivity() {
             "OpenVPN"
         )
         dropdown.adapter = ArrayAdapter(
-            this, android.R.layout.simple_spinner_dropdown_item, items
+            this, R.layout.spinner_item, items
         )
         var vpnPackageName = "com.wireguard.android"
 
