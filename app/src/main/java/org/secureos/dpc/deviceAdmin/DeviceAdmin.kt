@@ -198,6 +198,15 @@ class DeviceAdmin : DeviceAdminReceiver() {
                 when (vpnPackageOrder) {
                     0 -> "com.wireguard.android"
                     1 -> "net.mullvad.mullvadvpn"
+                    2 -> "com.nordvpn.android"
+                    3 -> "com.surfshark.vpnclient.android"
+                    4 -> "de.mobileconcepts.cyberghost"
+                    5 -> "ch.protonvpn.android"
+                    6 -> "com.ixolit.ipvanish"
+                    7 -> "com.strongvpn"
+                    8 -> "com.windscribe.vpn"
+                    9 -> "com.expressvpn.vpn"
+                    10 -> "de.blinkt.openvpn"
                     else -> {
                         "com.wireguard.android"
                     } // Default WireGuard
