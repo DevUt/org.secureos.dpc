@@ -126,6 +126,7 @@ class Misc : AppCompatActivity() {
         runBlocking {
             val currentVpnPackageOrder =
                 MiscPrefManager(this@Misc).readEnabled("vpn_packageName") ?: 0
+            Log.d(TAG, "CurrentVpnPackageOrder $currentVpnPackageOrder")
             dropdown.setSelection(currentVpnPackageOrder)
         }
 
@@ -175,8 +176,9 @@ class Misc : AppCompatActivity() {
                         )
                     }
 
+                    Log.d(TAG, "Saving vpnPackageName ${getVpnPackageName(vpnPackageName)}")
                     miscPrefManager.writeEnabled(
-                        "vpn_packageName", when (vpnPackageName) {
+                        "vpn_packageName", when (getVpnPackageName(vpnPackageName)) {
                             "net.mullvad.mullvadvpn" -> 1
                             "com.nordvpn.android" -> 2
                             "com.surfshark.vpnclient.android" -> 3
@@ -194,7 +196,23 @@ class Misc : AppCompatActivity() {
             }
             Toast.makeText(this, "Saved Settings", Toast.LENGTH_SHORT).show()
         }
+    }
 
+    fun getVpnPackageName(humanReadableName : String): String {
+        return when(humanReadableName) {
+            "Wireguard" -> "com.wireguard.android"
+            "Mullvad" -> "net.mullvad.mullvadvpn"
+            "NordVPN" -> "com.nordvpn.android"
+            "SurfShark" -> "com.surfshark.vpnclient.android"
+            "Cyber Ghost" -> "de.mobileconcepts.cyberghost"
+            "Proton" -> "ch.protonvpn.android"
+            "IP Vanish" -> "com.ixolit.ipvanish"
+            "StrongVPN" -> "com.strongvpn"
+            "Windscribe" -> "com.windscribe.vpn"
+            "ExpressVPN" -> "com.expressvpn.vpn"
+            "OpenVPN" -> "de.blinkt.openvpn"
+            else -> "com.wireguard.android" // Default WireGuard
+        }
     }
 
 }
