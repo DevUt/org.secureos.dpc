@@ -109,12 +109,12 @@ class DeviceAdmin : DeviceAdminReceiver() {
             runBlocking {
                 if (permissionPref.readPermEnabled(permissions.first) == 2) {
                     dpm.addUserRestriction(cn, permissions.first)
-                    Log.d(TAG,"Disabled " + permissions.first)
-                }else if(permissionPref.readPermEnabled(permissions.first) == 1){
-                    dpm.clearUserRestriction(cn,permissions.first)
-                    Log.d(TAG,"Enabled " + permissions.first)
-                }else{
-                    Log.d(TAG,"No action taken on " + permissions.first)
+                    Log.d(TAG, "Disabled " + permissions.first)
+                } else if (permissionPref.readPermEnabled(permissions.first) == 1) {
+                    dpm.clearUserRestriction(cn, permissions.first)
+                    Log.d(TAG, "Enabled " + permissions.first)
+                } else {
+                    Log.d(TAG, "No action taken on " + permissions.first)
                 }
             }
         }
@@ -186,14 +186,41 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
     private fun enableVpnPolicy(context: Context) {
         Log.d(TAG, "Enabling VPN Policy")
-        val vpnPackageName = "com.wireguard.android"
-        //val vpnPackageName = "net.mullvad.mullvadvpn"
+        
+        val miscPrefManager = MiscPrefManager(context)
+        var vpnPackageName: String = "com.wireguard.android"
+
+        runBlocking {
+            val vpnPackageOrder: Int? = miscPrefManager.readEnabled("vpn_packageName")
+            if (vpnPackageOrder == null) {
+                Log.e(TAG, "Invalid vpn package order number defaulting to WireGuard")
+                vpnPackageName = "com.wireguard.android"
+            } else {
+                vpnPackageName = when (vpnPackageOrder) {
+                    0 -> "com.wireguard.android"
+                    1 -> "net.mullvad.mullvadvpn"
+                    2 -> "com.nordvpn.android"
+                    3 -> "com.surfshark.vpnclient.android"
+                    4 -> "de.mobileconcepts.cyberghost"
+                    5 -> "ch.protonvpn.android"
+                    6 -> "com.ixolit.ipvanish"
+                    7 -> "com.strongvpn"
+                    8 -> "com.windscribe.vpn"
+                    9 -> "com.expressvpn.vpn"
+                    10 -> "de.blinkt.openvpn"
+                    else -> {
+                        "com.wireguard.android"
+                    } // Default WireGuard
+                }
+            }
+        }
+
         val packageD = PackageData(context, PackageManager.MATCH_DISABLED_COMPONENTS, true)
         packageD.returnData()
         runBlocking {
-            if (MiscPrefManager(context).readEnabled("vpn_always") == 2) {
+            if (miscPrefManager.readEnabled("vpn_always") == 2) {
                 if (PackagePrefManager(context).readEnabled(vpnPackageName) == 1) {
-                    val vpnLockdown =  MiscPrefManager(context).readEnabled("vpn_lockdown") == 2
+                    val vpnLockdown = MiscPrefManager(context).readEnabled("vpn_lockdown") == 2
                     dpm.setAlwaysOnVpnPackage(cn, vpnPackageName, vpnLockdown)
                 } else
                     Toast.makeText(context, "Vpn package not found", Toast.LENGTH_SHORT).show()
