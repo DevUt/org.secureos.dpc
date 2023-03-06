@@ -50,9 +50,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
     fun enforcePolicy(context: Context): Boolean {
         if (!isAdmin(context.applicationContext)) {
             Toast.makeText(
-                context.applicationContext,
-                "Currently not a device admin",
-                Toast.LENGTH_LONG
+                context.applicationContext, "Currently not a device admin", Toast.LENGTH_LONG
             ).show()
             return false
         }
@@ -76,6 +74,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "Enforced package policy")
         enableVpnPolicy(context.applicationContext)
         Log.d(TAG, "Enforced VPN Policy")
+
         val miscPrefManager = MiscPrefManager(context.applicationContext)
         runBlocking {
             miscPrefManager.writeEnabled("enforced", 2)
@@ -135,31 +134,23 @@ class DeviceAdmin : DeviceAdminReceiver() {
         runBlocking {
             dpm.setPasswordQuality(cn, DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
             dpm.setMaximumFailedPasswordsForWipe(
-                cn, MiscPrefManager(context.applicationContext).readEnabled("wipe_retries")
-                    ?: 7
+                cn, MiscPrefManager(context.applicationContext).readEnabled("wipe_retries") ?: 7
             )
             dpm.setPasswordMinimumLength(
-                cn,
-                MiscPrefManager(context.applicationContext).readEnabled("min_length")
-                    ?: 20
+                cn, MiscPrefManager(context.applicationContext).readEnabled("min_length") ?: 20
             )
             dpm.setPasswordMinimumUpperCase(
-                cn,
-                MiscPrefManager(context.applicationContext).readEnabled("min_uppercase")
-                    ?: 1
+                cn, MiscPrefManager(context.applicationContext).readEnabled("min_uppercase") ?: 1
             )
 
             dpm.setPasswordMinimumLowerCase(
-                cn, MiscPrefManager(context.applicationContext).readEnabled("min_lowercase")
-                    ?: 1
+                cn, MiscPrefManager(context.applicationContext).readEnabled("min_lowercase") ?: 1
             )
             dpm.setPasswordMinimumSymbols(
-                cn, MiscPrefManager(context.applicationContext).readEnabled("min_special")
-                    ?: 1
+                cn, MiscPrefManager(context.applicationContext).readEnabled("min_special") ?: 1
             )
             dpm.setPasswordMinimumNumeric(
-                cn, MiscPrefManager(context.applicationContext).readEnabled("min_number")
-                    ?: 1
+                cn, MiscPrefManager(context.applicationContext).readEnabled("min_number") ?: 1
             )
         }
         if (!dpm.isActivePasswordSufficient) {
@@ -186,7 +177,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
     private fun enableVpnPolicy(context: Context) {
         Log.d(TAG, "Enabling VPN Policy")
-        
+
         val miscPrefManager = MiscPrefManager(context)
         var vpnPackageName: String = "com.wireguard.android"
 
@@ -222,8 +213,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
                 if (PackagePrefManager(context).readEnabled(vpnPackageName) == 1) {
                     val vpnLockdown = MiscPrefManager(context).readEnabled("vpn_lockdown") == 2
                     dpm.setAlwaysOnVpnPackage(cn, vpnPackageName, vpnLockdown)
-                } else
-                    Toast.makeText(context, "Vpn package not found", Toast.LENGTH_SHORT).show()
+                } else Toast.makeText(context, "Vpn package not found", Toast.LENGTH_SHORT).show()
             }
         }
     }
