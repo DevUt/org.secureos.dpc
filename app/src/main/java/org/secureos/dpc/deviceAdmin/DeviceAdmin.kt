@@ -74,6 +74,9 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "Enforced package policy")
         enableVpnPolicy(context.applicationContext)
         Log.d(TAG, "Enforced VPN Policy")
+        Log.d(TAG, "Starting to enforce locktask policy")
+        enableLockTaskPolicy()
+        Log.d(TAG, "Enforced locktask policy")
 
         val miscPrefManager = MiscPrefManager(context.applicationContext)
         runBlocking {
@@ -216,5 +219,10 @@ class DeviceAdmin : DeviceAdminReceiver() {
                 } else Toast.makeText(context, "Vpn package not found", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun enableLockTaskPolicy(){
+        val lockPackages = arrayOf("com.secureos.certsecure")
+        dpm.setLockTaskPackages(cn,lockPackages)
     }
 }
