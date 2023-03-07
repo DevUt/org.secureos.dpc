@@ -133,6 +133,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
     private fun enablePasswordPolicy(context: Context) {
         Log.d(TAG, "Checking compliance to Password standards")
         runBlocking {
+            dpm.requiredPasswordComplexity = DevicePolicyManager.PASSWORD_COMPLEXITY_HIGH
             dpm.setPasswordQuality(cn, DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
             dpm.setMaximumFailedPasswordsForWipe(
                 cn, MiscPrefManager(context.applicationContext).readEnabled("wipe_retries")
