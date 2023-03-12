@@ -25,6 +25,8 @@ class DeviceAdmin : DeviceAdminReceiver() {
     override fun onEnabled(context: Context, intent: Intent) {
         super.onEnabled(context, intent)
         Log.d(TAG, "enabled")
+        Log.d(TAG, "Enabling locktask policy")
+        enforceLockTaskPolicy(context)
         Toast.makeText(context, "DeviceAdmin enabled", Toast.LENGTH_SHORT).show()
         initialize(context.applicationContext)
     }
@@ -45,6 +47,20 @@ class DeviceAdmin : DeviceAdminReceiver() {
     fun isAdmin(context: Context): Boolean {
         initialize(context.applicationContext)
         return dpm.isAdminActive(cn)
+    }
+
+    fun enforceLockTaskPolicy(context: Context) {
+        initialize(context)
+        if (isAdmin(context)) {
+            dpm.setLockTaskPackages(
+                cn,
+                arrayOf(
+                    "org.sos.device",
+                    "com.android.settings.wifi.WifiPickerActivity",
+                    "org.sos.emergencyreset"
+                )
+            )
+        }
     }
 
     fun enforcePolicy(context: Context): Boolean {
@@ -187,7 +203,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
     private fun enableVpnPolicy(context: Context) {
         Log.d(TAG, "Enabling VPN Policy")
-        
+
         val miscPrefManager = MiscPrefManager(context)
         var vpnPackageName: String = "com.wireguard.android"
 
