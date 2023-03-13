@@ -34,6 +34,9 @@ class DeviceAdmin : DeviceAdminReceiver() {
     override fun onDisabled(context: Context, intent: Intent) {
         super.onDisabled(context, intent)
         Log.d(TAG, "disabled")
+        System.setProperty("persist.sos.dpc", "deactivated")
+        val myProp: String? = System.getProperty("persist.sos.dpc")
+        Log.d(TAG, "persist.sos.dpc: $myProp")
         runBlocking {
             MiscPrefManager(context.applicationContext).writeEnabled("enforced", 1)
         }
@@ -72,6 +75,11 @@ class DeviceAdmin : DeviceAdminReceiver() {
             ).show()
             return false
         }
+
+        System.setProperty("persist.sos.dpc", "activated")
+        val myProp: String? = System.getProperty("persist.sos.dpc")
+        Log.d(TAG, "persist.sos.dpc: $myProp")
+
         Log.d(TAG, "Starting to enforce Policy")
         Log.d(TAG, "Starting to enforce Password policy")
         enablePasswordPolicy(context.applicationContext)
