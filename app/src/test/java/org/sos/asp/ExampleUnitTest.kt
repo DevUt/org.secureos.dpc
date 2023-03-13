@@ -1,4 +1,4 @@
-package org.secureos.dpc
+package org.sos.asp
 
 import org.junit.Test
 

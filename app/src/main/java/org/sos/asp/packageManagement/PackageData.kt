@@ -1,4 +1,4 @@
-package org.secureos.dpc.packageManagement
+package org.sos.asp.packageManagement
 
 import android.content.Context
 import android.content.pm.ApplicationInfo
@@ -74,7 +74,7 @@ class PackageData(
         return listOf(
             "com.android.captiveportallogin",
             "com.android.providers.telephony",
-            "org.secureos.dpc",
+            "org.sos.asp",
             "com.android.phone"
         )
     }

@@ -1,4 +1,4 @@
-package org.secureos.dpc.misc
+package org.sos.asp.misc
 
 import android.os.Bundle
 import android.util.Log
@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.runBlocking
-import org.secureos.dpc.R
+import org.sos.asp.R
 
 
 class Misc : AppCompatActivity() {

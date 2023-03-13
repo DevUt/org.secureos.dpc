@@ -1,11 +1,11 @@
-package org.secureos.dpc
+package org.sos.asp
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.runBlocking
-import org.secureos.dpc.deviceAdmin.DeviceAdmin
-import org.secureos.dpc.misc.MiscPrefManager
+import org.sos.asp.deviceAdmin.DeviceAdmin
+import org.sos.asp.misc.MiscPrefManager
 
 class MainEnforced : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

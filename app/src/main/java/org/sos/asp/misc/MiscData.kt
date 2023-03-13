@@ -1,4 +1,4 @@
-package org.secureos.dpc.misc
+package org.sos.asp.misc
 
 import android.content.Context
 import kotlinx.coroutines.runBlocking

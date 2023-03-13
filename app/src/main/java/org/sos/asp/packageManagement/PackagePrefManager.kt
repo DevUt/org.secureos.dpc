@@ -1,4 +1,4 @@
-package org.secureos.dpc.packageManagement
+package org.sos.asp.packageManagement
 
 import android.content.Context
 import android.util.Log

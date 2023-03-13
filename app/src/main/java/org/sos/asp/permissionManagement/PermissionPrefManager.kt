@@ -1,4 +1,4 @@
-package org.secureos.dpc.permissionManagement
+package org.sos.asp.permissionManagement
 
 import android.content.Context
 import android.util.Log

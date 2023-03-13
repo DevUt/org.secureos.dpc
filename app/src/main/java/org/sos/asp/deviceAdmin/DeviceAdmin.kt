@@ -1,4 +1,4 @@
-package org.secureos.dpc.deviceAdmin
+package org.sos.asp.deviceAdmin
 
 import android.app.admin.DeviceAdminReceiver
 import android.app.admin.DevicePolicyManager
@@ -9,11 +9,11 @@ import android.content.pm.PackageManager
 import android.util.Log
 import android.widget.Toast
 import kotlinx.coroutines.runBlocking
-import org.secureos.dpc.misc.MiscPrefManager
-import org.secureos.dpc.packageManagement.PackageData
-import org.secureos.dpc.packageManagement.PackagePrefManager
-import org.secureos.dpc.permissionManagement.PermissionData
-import org.secureos.dpc.permissionManagement.PermissionPrefManager
+import org.sos.asp.misc.MiscPrefManager
+import org.sos.asp.packageManagement.PackageData
+import org.sos.asp.packageManagement.PackagePrefManager
+import org.sos.asp.permissionManagement.PermissionData
+import org.sos.asp.permissionManagement.PermissionPrefManager
 
 class DeviceAdmin : DeviceAdminReceiver() {
     companion object {
@@ -34,9 +34,9 @@ class DeviceAdmin : DeviceAdminReceiver() {
     override fun onDisabled(context: Context, intent: Intent) {
         super.onDisabled(context, intent)
         Log.d(TAG, "disabled")
-        System.setProperty("persist.sos.dpc", "deactivated")
-        val myProp: String? = System.getProperty("persist.sos.dpc")
-        Log.d(TAG, "persist.sos.dpc: $myProp")
+        System.setProperty("persist.sos.asp", "deactivated")
+        val myProp: String? = System.getProperty("persist.sos.asp")
+        Log.d(TAG, "persist.sos.asp: $myProp")
         runBlocking {
             MiscPrefManager(context.applicationContext).writeEnabled("enforced", 1)
         }
@@ -76,9 +76,9 @@ class DeviceAdmin : DeviceAdminReceiver() {
             return false
         }
 
-        System.setProperty("persist.sos.dpc", "activated")
-        val myProp: String? = System.getProperty("persist.sos.dpc")
-        Log.d(TAG, "persist.sos.dpc: $myProp")
+        System.setProperty("persist.sos.asp", "activated")
+        val myProp: String? = System.getProperty("persist.sos.asp")
+        Log.d(TAG, "persist.sos.asp: $myProp")
 
         Log.d(TAG, "Starting to enforce Policy")
         Log.d(TAG, "Starting to enforce Password policy")

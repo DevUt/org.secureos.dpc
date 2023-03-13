@@ -1,11 +1,11 @@
-package org.secureos.dpc.packageManagement
+package org.sos.asp.packageManagement
 
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import org.secureos.dpc.R
+import org.sos.asp.R
 
 class PackageActivity : AppCompatActivity() {
     companion object {

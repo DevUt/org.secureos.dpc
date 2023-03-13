@@ -1,7 +1,6 @@
-package org.secureos.dpc.permissionManagement
+package org.sos.asp.permissionManagement
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.runBlocking
-import org.secureos.dpc.R
+import org.sos.asp.R
 
 class ItemAdapter(
     private val context: Context,

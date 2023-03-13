@@ -1,4 +1,4 @@
-package org.secureos.dpc.packageManagement
+package org.sos.asp.packageManagement
 
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.runBlocking
-import org.secureos.dpc.R
+import org.sos.asp.R
 
 class ItemAdapter(
     private val packageList: MutableList<ApplicationInfo>,

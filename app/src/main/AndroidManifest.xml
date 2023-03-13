@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="org.secureos.dpc">
+    package="org.sos.asp">
 
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
     <uses-permission
@@ -18,23 +18,23 @@
         android:testOnly="false"
         android:theme="@style/Theme.FirstTestDPM">
         <activity
-            android:name=".MainEnforced"
+            android:name="org.sos.asp.MainEnforced"
             android:exported="false" />
         <activity
-            android:name=".misc.Misc"
+            android:name="org.sos.asp.misc.Misc"
             android:exported="false" />
         <activity
-            android:name=".permissionManagement.PermissionActivity"
+            android:name="org.sos.asp.permissionManagement.PermissionActivity"
             android:exported="false" />
         <activity
-            android:name=".packageManagement.PackageActivity"
+            android:name="org.sos.asp.packageManagement.PackageActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" /> <!-- <activity -->
+            android:parentActivityName="org.sos.asp.MainActivity" /> <!-- <activity -->
         <!-- android:name=".permissionManagement.PermissionActivity" -->
         <!-- android:exported="false" -->
         <!-- android:parentActivityName=".MainActivity" /> -->
         <activity
-            android:name=".MainActivity"
+            android:name="org.sos.asp.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +44,7 @@
         </activity>
 
         <receiver
-            android:name=".deviceAdmin.DeviceAdmin"
+            android:name="org.sos.asp.deviceAdmin.DeviceAdmin"
             android:exported="false"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_DEVICE_ADMIN">

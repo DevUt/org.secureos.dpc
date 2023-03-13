@@ -1,4 +1,4 @@
-package org.secureos.dpc
+package org.sos.asp
 
 
 import android.content.Intent
@@ -9,14 +9,14 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.runBlocking
-import org.secureos.dpc.deviceAdmin.DeviceAdmin
-import org.secureos.dpc.misc.Misc
-import org.secureos.dpc.misc.MiscData
-import org.secureos.dpc.misc.MiscPrefManager
-import org.secureos.dpc.packageManagement.PackageActivity
-import org.secureos.dpc.packageManagement.PackageData
-import org.secureos.dpc.permissionManagement.PermissionActivity
-import org.secureos.dpc.permissionManagement.PermissionData
+import org.sos.asp.deviceAdmin.DeviceAdmin
+import org.sos.asp.misc.Misc
+import org.sos.asp.misc.MiscData
+import org.sos.asp.misc.MiscPrefManager
+import org.sos.asp.packageManagement.PackageActivity
+import org.sos.asp.packageManagement.PackageData
+import org.sos.asp.permissionManagement.PermissionActivity
+import org.sos.asp.permissionManagement.PermissionData
 
 
 class MainActivity : AppCompatActivity() {
