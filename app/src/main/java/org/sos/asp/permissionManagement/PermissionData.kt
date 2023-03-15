@@ -46,6 +46,7 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_SCREEN_TIMEOUT,2))
         permissionList.add(Pair(UserManager.DISALLOW_AMBIENT_DISPLAY,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_VPN,2))
+        permissionList.add(Pair(UserManager.DISALLOW_CONFIG_DATE_TIME,2))
         return this
     }
     fun returnData() : MutableList<Pair<String,Int>>{
