@@ -1,7 +1,9 @@
 package org.sos.asp.deviceAdmin
 
+import android.Manifest
 import android.app.admin.DeviceAdminReceiver
 import android.app.admin.DevicePolicyManager
+import android.app.admin.DevicePolicyManager.PERMISSION_GRANT_STATE_GRANTED
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -62,6 +64,20 @@ class DeviceAdmin : DeviceAdminReceiver() {
                     "com.android.settings.wifi.WifiPickerActivity",
                     "org.sos.emergencyreset"
                 )
+            )
+
+            dpm.setPermissionGrantState(
+                cn,
+                "org.sos.device",
+                Manifest.permission.SYSTEM_ALERT_WINDOW,
+                PERMISSION_GRANT_STATE_GRANTED
+            )
+
+            dpm.setPermissionGrantState(
+                cn,
+                "org.sos.device",
+                Manifest.permission.CAMERA,
+                PERMISSION_GRANT_STATE_GRANTED
             )
         }
     }
