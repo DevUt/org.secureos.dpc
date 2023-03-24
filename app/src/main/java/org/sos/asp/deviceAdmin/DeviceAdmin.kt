@@ -76,6 +76,13 @@ class DeviceAdmin : DeviceAdminReceiver() {
             dpm.setPermissionGrantState(
                 cn,
                 "org.sos.device",
+                Manifest.permission.SCHEDULE_EXACT_ALARM,
+                PERMISSION_GRANT_STATE_GRANTED
+            )
+
+            dpm.setPermissionGrantState(
+                cn,
+                "org.sos.device",
                 Manifest.permission.CAMERA,
                 PERMISSION_GRANT_STATE_GRANTED
             )
