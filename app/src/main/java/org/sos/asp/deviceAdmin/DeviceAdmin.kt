@@ -27,8 +27,6 @@ class DeviceAdmin : DeviceAdminReceiver() {
     override fun onEnabled(context: Context, intent: Intent) {
         super.onEnabled(context, intent)
         Log.d(TAG, "enabled")
-        Log.d(TAG, "Enabling locktask policy")
-        enforceLockTaskPolicy(context)
         Toast.makeText(context, "DeviceAdmin enabled", Toast.LENGTH_SHORT).show()
         initialize(context.applicationContext)
     }
@@ -54,40 +52,6 @@ class DeviceAdmin : DeviceAdminReceiver() {
         return dpm.isAdminActive(cn)
     }
 
-    fun enforceLockTaskPolicy(context: Context) {
-        initialize(context)
-        if (isAdmin(context)) {
-            dpm.setLockTaskPackages(
-                cn,
-                arrayOf(
-                    "org.sos.device",
-                    "com.android.settings.wifi.WifiPickerActivity",
-                    "org.sos.emergencyreset"
-                )
-            )
-
-            dpm.setPermissionGrantState(
-                cn,
-                "org.sos.device",
-                Manifest.permission.SYSTEM_ALERT_WINDOW,
-                PERMISSION_GRANT_STATE_GRANTED
-            )
-
-            dpm.setPermissionGrantState(
-                cn,
-                "org.sos.device",
-                Manifest.permission.SCHEDULE_EXACT_ALARM,
-                PERMISSION_GRANT_STATE_GRANTED
-            )
-
-            dpm.setPermissionGrantState(
-                cn,
-                "org.sos.device",
-                Manifest.permission.CAMERA,
-                PERMISSION_GRANT_STATE_GRANTED
-            )
-        }
-    }
 
     fun enforcePolicy(context: Context): Boolean {
         if (!isAdmin(context.applicationContext)) {
