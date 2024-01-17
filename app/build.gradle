@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    compileSdk 31
+    compileSdk 33
 
     defaultConfig {
         applicationId "org.sos.asp"
         minSdk 31
-        targetSdk 31
+        targetSdk 33
 
         versionCode 310
         versionName "3.1.0"
