@@ -119,7 +119,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
         for (permissions in permissionD.returnData()) {
             runBlocking {
                 if (permissionPref.readPermEnabled(permissions.first) == 2) {
-                    dpm.addUserRestriction(cn, permissions.first)
+                    dpm.addUserRestrictionGlobally(permissions.first)
                     Log.d(TAG, "Disabled " + permissions.first)
                 } else if (permissionPref.readPermEnabled(permissions.first) == 1) {
                     dpm.clearUserRestriction(cn, permissions.first)
@@ -179,14 +179,6 @@ class DeviceAdmin : DeviceAdminReceiver() {
             val setPassIntent = Intent(DevicePolicyManager.ACTION_SET_NEW_PASSWORD)
             setPassIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             context.applicationContext.startActivity(setPassIntent)
-
-//            runBlocking {
-//                if(dpm.passwordComplexity != dpm.requiredPasswordComplexity){
-//                    Thread.sleep(6000)
-//                    Toast.makeText(context, "BRUH2", Toast.LENGTH_SHORT).show()
-//                    enablePasswordPolicy(context)
-//                }
-//            }
         }
         val maxWipeTries = runBlocking {
             MiscPrefManager(context.applicationContext).readEnabled("wipe_retries")
