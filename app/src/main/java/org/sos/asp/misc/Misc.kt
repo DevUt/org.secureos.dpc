@@ -52,6 +52,16 @@ class Misc : AppCompatActivity() {
         val vpnLockdown: CheckBox = findViewById(R.id.vpn_lockdown_check)
         val dropdown = findViewById<Spinner>(R.id.vpn_spinner)
 
+        val blockVpnUninstall: CheckBox = findViewById(R.id.block_vpn_uninstall_check)
+
+        // Check the status of Blocking VPN Uninstall
+        // I'm crying writing one more run block. THIS SHOULD REALLY BE SEPARATE
+        runBlocking {
+            val miscPrefManager = MiscPrefManager(this@Misc)
+            val value = miscPrefManager.readEnabled("block_vpn_uninstall")
+            blockVpnUninstall.isChecked = (value == 2)
+        }
+
         val items = arrayOf(
             "Wireguard",
             "Mullvad",
@@ -108,7 +118,6 @@ class Misc : AppCompatActivity() {
                 vpnLockdown.isClickable = false
             }
         }
-
 
         dropdown.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
@@ -174,6 +183,12 @@ class Misc : AppCompatActivity() {
                         miscPrefManager.writeEnabled(
                             "vpn_lockdown", 2
                         )
+                    }
+
+                    if(blockVpnUninstall.isChecked){
+                        miscPrefManager.writeEnabled("block_vpn_uninstall",2)
+                    }else{
+                        miscPrefManager.writeEnabled("block_vpn_uninstall",1)
                     }
 
                     Log.d(TAG, "Saving vpnPackageName ${getVpnPackageName(vpnPackageName)}")

@@ -222,10 +222,17 @@ class DeviceAdmin : DeviceAdminReceiver() {
         val packageD = PackageData(context, PackageManager.MATCH_DISABLED_COMPONENTS, true)
         packageD.returnData()
         runBlocking {
-            if (miscPrefManager.readEnabled("vpn_always") == 2) {
+            val alwaysVpn = miscPrefManager.readEnabled("vpn_always") == 2
+            val blockVpn = miscPrefManager.readEnabled("block_vpn_uninstall") == 2
+            if (alwaysVpn or blockVpn) {
                 if (PackagePrefManager(context).readEnabled(vpnPackageName) == 1) {
-                    val vpnLockdown = MiscPrefManager(context).readEnabled("vpn_lockdown") == 2
-                    dpm.setAlwaysOnVpnPackage(cn, vpnPackageName, vpnLockdown)
+                    if(alwaysVpn){
+                        val vpnLockdown = MiscPrefManager(context).readEnabled("vpn_lockdown") == 2
+                        dpm.setAlwaysOnVpnPackage(cn, vpnPackageName, vpnLockdown)
+                    }
+                    if(blockVpn){
+                        dpm.setUninstallBlocked(cn,vpnPackageName,true)
+                    }
                 } else
                     Toast.makeText(context, "Vpn package not found", Toast.LENGTH_SHORT).show()
             }

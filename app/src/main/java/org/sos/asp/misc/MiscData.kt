@@ -16,6 +16,7 @@ class MiscData(context: Context) {
             miscPrefManager.writeEnabled("min_number",4)
             miscPrefManager.writeEnabled("vpn_always",2)
             miscPrefManager.writeEnabled("vpn_lockdown",2)
+            miscPrefManager.writeEnabled("block_vpn_uninstall",0)
         }
     }
 }

@@ -30,4 +30,5 @@
     <string name="minimum_number_text">Minimum Number</string>
     <string name="min_num_text">1</string>
     <string name="select_vpn">Select Vpn</string>
+    <string name="block_vpn_uninstall">Block VPN Uninstall</string>
 </resources>
