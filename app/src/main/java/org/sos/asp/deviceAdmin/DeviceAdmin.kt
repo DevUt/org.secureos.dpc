@@ -55,14 +55,13 @@ class DeviceAdmin : DeviceAdminReceiver() {
     }
 
 
-    suspend fun enforcePolicy(context: Context): Boolean {
+    suspend fun enforcePolicy(context: Context) {
         if (!isAdmin(context.applicationContext)) {
             Toast.makeText(
                 context.applicationContext,
                 "Currently not a device admin",
                 Toast.LENGTH_LONG
             ).show()
-            return false
         }
 
         System.setProperty("persist.sos.asp", "activated")
@@ -75,25 +74,15 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "Success in setting password policy")
         Log.d(TAG, "Starting to enforce Package policy")
         enablePackagePolicy(context.applicationContext)
-        Log.d(TAG, "Enforced package policy")
         Log.d(TAG, "Starting to enforce Permission policy")
-        // Wait on permission Policy
         enablePermissionPolicy(context.applicationContext)
-        Log.d(TAG, "Enforced permission policy")
-//        Log.d(TAG, "Starting to enforce camera Policy")
-//        enableCameraPolicy(context.applicationContext)
-//        Log.d(TAG, "Enforced Camera Policy")
-        Log.d(TAG, "Starting to enforce VPN Policy")
+
         Log.d(TAG, "Starting to enforce Package policy")
         enablePackagePolicy(context.applicationContext)
-        Log.d(TAG, "Enforced package policy")
+        Log.d(TAG, "Starting to enforce VPN Policy")
         enableVpnPolicy(context.applicationContext)
-        Log.d(TAG, "Enforced VPN Policy")
         val miscPrefManager = MiscPrefManager(context.applicationContext)
-        runBlocking {
-            miscPrefManager.writeEnabled("enforced", 2)
-        }
-        return true
+        miscPrefManager.writeEnabled("enforced", 2)
     }
 
     private suspend fun enablePackagePolicy(context: Context) {
@@ -133,9 +122,9 @@ class DeviceAdmin : DeviceAdminReceiver() {
     private suspend fun enableCameraPolicy(context: Context) {
         Log.d(TAG, "Enabling Camera Policy")
         val miscPref = MiscPrefManager(context)
-            if (miscPref.readEnabled("camera") == 1) {
-                dpm.setCameraDisabled(cn, true)
-            }
+        if (miscPref.readEnabled("camera") == 1) {
+            dpm.setCameraDisabled(cn, true)
+        }
 
     }
 
