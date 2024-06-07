@@ -5,9 +5,13 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.sos.asp.deviceAdmin.DeviceAdmin
 import org.sos.asp.misc.Misc
@@ -59,8 +63,13 @@ class MainActivity : AppCompatActivity() {
         val logoEnable: ImageView = findViewById(R.id.main_logo)
         logoEnable.setOnClickListener {
             val deviceObj = DeviceAdmin()
+            val progressBar : ProgressBar = findViewById(R.id.enforcer_spin)
             if (deviceObj.isAdmin(this)) {
-                deviceObj.enforcePolicy(this)
+                lifecycleScope.launch {
+                    progressBar.visibility = View.VISIBLE
+                    deviceObj.enforcePolicy(applicationContext)
+                    progressBar.visibility = View.GONE
+                }
             }
             finish()
         }
