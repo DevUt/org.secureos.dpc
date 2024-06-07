@@ -53,7 +53,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
     }
 
 
-    fun enforcePolicy(context: Context): Boolean {
+    suspend fun enforcePolicy(context: Context): Boolean {
         if (!isAdmin(context.applicationContext)) {
             Toast.makeText(
                 context.applicationContext,
@@ -94,30 +94,28 @@ class DeviceAdmin : DeviceAdminReceiver() {
         return true
     }
 
-    private fun enablePackagePolicy(context: Context) {
+    private suspend fun enablePackagePolicy(context: Context) {
         Log.d(TAG, "Enabling Package Policy")
         val packagePref = PackagePrefManager(context)
         val packageList =
             PackageData(context, PackageManager.MATCH_DISABLED_COMPONENTS, true).returnData()
         for (app in packageList) {
-            runBlocking {
+
                 if (packagePref.readEnabled(app.packageName) == 2) {
                     dpm.setApplicationHidden(cn, app.packageName, true)
                     Log.d(TAG, "Disabled " + app.packageName?.toString())
                 } else {
                     Log.d(TAG, "Left " + app.packageName?.toString())
                 }
-            }
         }
     }
 
-    private fun enablePermissionPolicy(context: Context) {
+    suspend private fun enablePermissionPolicy(context: Context) {
         Log.d(TAG, "Enabling Permission Policy")
         val permissionD = PermissionData(context)
         val permissionPref = PermissionPrefManager(context)
         permissionD.populateData()
         for (permissions in permissionD.returnData()) {
-            runBlocking {
                 if (permissionPref.readPermEnabled(permissions.first) == 2) {
                     dpm.addUserRestriction(cn,permissions.first)
                     Log.d(TAG, "Disabled " + permissions.first)
@@ -127,23 +125,20 @@ class DeviceAdmin : DeviceAdminReceiver() {
                 } else {
                     Log.d(TAG, "No action taken on " + permissions.first)
                 }
-            }
         }
     }
 
-    private fun enableCameraPolicy(context: Context) {
+    private suspend fun enableCameraPolicy(context: Context) {
         Log.d(TAG, "Enabling Camera Policy")
         val miscPref = MiscPrefManager(context)
-        runBlocking {
             if (miscPref.readEnabled("camera") == 1) {
                 dpm.setCameraDisabled(cn, true)
             }
-        }
+
     }
 
-    private fun enablePasswordPolicy(context: Context) {
+    private suspend fun enablePasswordPolicy(context: Context) {
         Log.d(TAG, "Checking compliance to Password standards")
-        runBlocking {
             dpm.requiredPasswordComplexity = DevicePolicyManager.PASSWORD_COMPLEXITY_HIGH
             dpm.setPasswordQuality(cn, DevicePolicyManager.PASSWORD_QUALITY_COMPLEX)
             dpm.setMaximumFailedPasswordsForWipe(
@@ -173,7 +168,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
                 cn, MiscPrefManager(context.applicationContext).readEnabled("min_number")
                     ?: 1
             )
-        }
+
         if (!dpm.isActivePasswordSufficient) {
             Toast.makeText(context, "Set a better password", Toast.LENGTH_LONG).show()
             val setPassIntent = Intent(DevicePolicyManager.ACTION_SET_NEW_PASSWORD)
@@ -188,7 +183,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "Successfully Set Maximum Failed Password Limit")
     }
 
-    private fun enableVpnPolicy(context: Context) {
+    private suspend fun enableVpnPolicy(context: Context) {
         Log.d(TAG, "Enabling VPN Policy")
 
         val miscPrefManager = MiscPrefManager(context)
@@ -221,7 +216,6 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
         val packageD = PackageData(context, PackageManager.MATCH_DISABLED_COMPONENTS, true)
         packageD.returnData()
-        runBlocking {
             val alwaysVpn = miscPrefManager.readEnabled("vpn_always") == 2
             val blockVpn = miscPrefManager.readEnabled("block_vpn_uninstall") == 2
             if (alwaysVpn or blockVpn) {
@@ -236,6 +230,6 @@ class DeviceAdmin : DeviceAdminReceiver() {
                 } else
                     Toast.makeText(context, "Vpn package not found", Toast.LENGTH_SHORT).show()
             }
-        }
+
     }
 }
