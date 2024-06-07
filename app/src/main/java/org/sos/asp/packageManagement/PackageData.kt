@@ -14,7 +14,7 @@ class PackageData(
     private val packageList: List<ApplicationInfo> =
         context.packageManager.getInstalledApplications(extraSpecification)
 
-    fun returnData(includeBannableapps: Boolean = false): MutableList<ApplicationInfo> {
+    suspend fun returnData(includeBannableApps: Boolean = false): MutableList<ApplicationInfo> {
         for (app in packageList) {
             val systemPackage = "android"
             if (!includeSystemApps) {
@@ -26,18 +26,16 @@ class PackageData(
                     continue
                 }
             }
-            runBlocking {
-                if (PackagePrefManager(context.applicationContext).readEnabled(app.packageName) == 0) {
-                    var enableStatus = 1
-                    if (!app.enabled)
-                        enableStatus = 2
-                    PackagePrefManager(context.applicationContext).writeEnabled(
-                        app.packageName,
-                        enableStatus
-                    )
-                }
+            if (PackagePrefManager(context.applicationContext).readEnabled(app.packageName) == 0) {
+                var enableStatus = 1
+                if (!app.enabled)
+                    enableStatus = 2
+                PackagePrefManager(context.applicationContext).writeEnabled(
+                    app.packageName,
+                    enableStatus
+                )
             }
-            if (!includeBannableapps && unBannableList().contains(app.packageName))
+            if (!includeBannableApps && unBannableList().contains(app.packageName))
                 continue
             packages.add(app)
         }

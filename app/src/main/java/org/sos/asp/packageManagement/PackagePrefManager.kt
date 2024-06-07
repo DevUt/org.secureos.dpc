@@ -21,7 +21,7 @@ class PackagePrefManager(context: Context){
             pref ->
                 retval = pref[packageKey] ?: 0
         }
-        Log.i("PackageItem", "in readEnabled " + retval.toString() + " "+ packageName.toString())
+        Log.i("PackageItem", "in readEnabled $retval $packageName")
         return retval
     }
     // 0-> not set 1-> enabled 2-> disabled
