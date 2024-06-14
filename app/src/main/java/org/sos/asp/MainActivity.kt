@@ -65,13 +65,14 @@ class MainActivity : AppCompatActivity() {
             val deviceObj = DeviceAdmin()
             val progressBar : ProgressBar = findViewById(R.id.enforcer_spin)
             if (deviceObj.isAdmin(this)) {
-                runBlocking {
-                    progressBar.visibility = View.VISIBLE
+                progressBar.visibility = View.VISIBLE
+                lifecycleScope.launch {
                     deviceObj.enforcePolicy(applicationContext)
                     progressBar.visibility = View.GONE
+                    finish()
                 }
             }
-            finish()
+
         }
     }
 
