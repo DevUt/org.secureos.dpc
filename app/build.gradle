@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "org.sos.asp"
-        minSdk 34
-        targetSdk 34
+        minSdk 35
+        targetSdk 35
 
-        versionCode 344
-        versionName "3.4.4"
+        versionCode 350
+        versionName "3.5.0"
 
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
