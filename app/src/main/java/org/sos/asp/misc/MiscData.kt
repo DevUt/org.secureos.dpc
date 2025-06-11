@@ -17,6 +17,7 @@ class MiscData(context: Context) {
             miscPrefManager.writeEnabled("vpn_always",2)
             miscPrefManager.writeEnabled("vpn_lockdown",2)
             miscPrefManager.writeEnabled("block_vpn_uninstall",2)
+            miscPrefManager.writeEnabled("disable_finger",2)
         }
     }
 }

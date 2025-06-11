@@ -3,6 +3,7 @@ package org.sos.asp.deviceAdmin
 import android.Manifest
 import android.app.admin.DeviceAdminReceiver
 import android.app.admin.DevicePolicyManager
+import android.app.admin.DevicePolicyManager.KEYGUARD_DISABLE_FINGERPRINT
 import android.app.admin.DevicePolicyManager.PERMISSION_GRANT_STATE_GRANTED
 import android.content.ComponentName
 import android.content.Context
@@ -202,6 +203,11 @@ class DeviceAdmin : DeviceAdminReceiver() {
                 } // Default WireGuard
             }
 
+        }
+
+        val disableFingerPrint = miscPrefManager.readEnabled("disable_finger") == 2
+        if(disableFingerPrint) {
+            dpm.setKeyguardDisabledFeatures(cn, KEYGUARD_DISABLE_FINGERPRINT)
         }
 
         val alwaysVpn = miscPrefManager.readEnabled("vpn_always") == 2
