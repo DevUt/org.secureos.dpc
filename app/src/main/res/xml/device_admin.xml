@@ -6,6 +6,5 @@
         <limit-password></limit-password>
         <reset-password></reset-password>
         <watch-login></watch-login>
-        <disable-keyguard-features></disable-keyguard-features>
     </uses-policies>
 </device-admin>

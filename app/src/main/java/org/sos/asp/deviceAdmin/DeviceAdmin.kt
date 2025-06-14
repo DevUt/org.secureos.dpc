@@ -71,7 +71,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
         Log.d(TAG, "Starting to enforce Policy")
         Log.d(TAG, "Starting to enforce Password policy")
-        enablePasswordPolicy(context.applicationContext)
+        // enablePasswordPolicy(context.applicationContext)
         Log.d(TAG, "Success in setting password policy")
         Log.d(TAG, "Starting to enforce Package policy")
         enablePackagePolicy(context.applicationContext)
@@ -205,10 +205,10 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
         }
 
-        val disableFingerPrint = miscPrefManager.readEnabled("disable_finger") == 2
-        if(disableFingerPrint) {
-            dpm.setKeyguardDisabledFeatures(cn, KEYGUARD_DISABLE_FINGERPRINT)
-        }
+//        val disableFingerPrint = miscPrefManager.readEnabled("disable_finger") == 2
+//        if(disableFingerPrint) {
+//            dpm.setKeyguardDisabledFeatures(cn, KEYGUARD_DISABLE_FINGERPRINT)
+//        }
 
         val alwaysVpn = miscPrefManager.readEnabled("vpn_always") == 2
         val blockVpn = miscPrefManager.readEnabled("block_vpn_uninstall") == 2

@@ -56,7 +56,7 @@ class Misc : AppCompatActivity() {
         val dropdown = findViewById<Spinner>(R.id.vpn_spinner)
 
         val blockVpnUninstall: CheckBox = findViewById(R.id.block_vpn_uninstall_check)
-        val disableFingerPrint: CheckBox = findViewById(R.id.finger_print_disable_checkbox)
+//        val disableFingerPrint: CheckBox = findViewById(R.id.finger_print_disable_checkbox)
 
         // Check the status of Blocking VPN Uninstall
         // I'm crying writing one more run block. THIS SHOULD REALLY BE SEPARATE
@@ -194,11 +194,11 @@ class Misc : AppCompatActivity() {
                     }else{
                         miscPrefManager.writeEnabled("block_vpn_uninstall",1)
                     }
-                    if(disableFingerPrint.isChecked){
-                        miscPrefManager.writeEnabled("disable_finger",2)
-                    }else{
-                        miscPrefManager.writeEnabled("disable_finger",1)
-                    }
+//                    if(disableFingerPrint.isChecked){
+//                        miscPrefManager.writeEnabled("disable_finger",2)
+//                    }else{
+//                        miscPrefManager.writeEnabled("disable_finger",1)
+//                    }
 
                     Log.d(TAG, "Saving vpnPackageName ${getVpnPackageName(vpnPackageName)}")
                     miscPrefManager.writeEnabled(
