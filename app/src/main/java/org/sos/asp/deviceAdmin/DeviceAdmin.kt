@@ -71,7 +71,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
 
         Log.d(TAG, "Starting to enforce Policy")
         Log.d(TAG, "Starting to enforce Password policy")
-        // enablePasswordPolicy(context.applicationContext)
+        enablePasswordPolicy(context.applicationContext)
         Log.d(TAG, "Success in setting password policy")
         Log.d(TAG, "Starting to enforce Package policy")
         enablePackagePolicy(context.applicationContext)
