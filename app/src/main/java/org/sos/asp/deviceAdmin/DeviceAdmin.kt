@@ -70,9 +70,7 @@ class DeviceAdmin : DeviceAdminReceiver() {
         Log.d(TAG, "persist.sos.asp: $myProp")
 
         Log.d(TAG, "Starting to enforce Policy")
-        Log.d(TAG, "Starting to enforce Password policy")
-        enablePasswordPolicy(context.applicationContext)
-        Log.d(TAG, "Success in setting password policy")
+
         Log.d(TAG, "Starting to enforce Package policy")
         enablePackagePolicy(context.applicationContext)
         Log.d(TAG, "Starting to enforce Permission policy")
@@ -84,6 +82,9 @@ class DeviceAdmin : DeviceAdminReceiver() {
         enableVpnPolicy(context.applicationContext)
         val miscPrefManager = MiscPrefManager(context.applicationContext)
         miscPrefManager.writeEnabled("enforced", 2)
+        Log.d(TAG, "Starting to enforce Password policy")
+        enablePasswordPolicy(context.applicationContext)
+        Log.d(TAG, "Success in setting password policy")
     }
 
     private suspend fun enablePackagePolicy(context: Context) {
