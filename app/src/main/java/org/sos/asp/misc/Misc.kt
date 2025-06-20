@@ -8,6 +8,8 @@ import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.sos.asp.R
 
@@ -143,6 +145,23 @@ class Misc : AppCompatActivity() {
             dropdown.setSelection(currentVpnPackageOrder)
         }
 
+        fun getVpnPackageName(humanReadableName : String): String {
+            return when(humanReadableName) {
+                "Wireguard" -> "com.wireguard.android"
+                "Mullvad" -> "net.mullvad.mullvadvpn"
+                "NordVPN" -> "com.nordvpn.android"
+                "SurfShark" -> "com.surfshark.vpnclient.android"
+                "Cyber Ghost" -> "de.mobileconcepts.cyberghost"
+                "Proton" -> "ch.protonvpn.android"
+                "IP Vanish" -> "com.ixolit.ipvanish"
+                "StrongVPN" -> "com.strongvpn"
+                "Windscribe" -> "com.windscribe.vpn"
+                "ExpressVPN" -> "com.expressvpn.vpn"
+                "OpenVPN" -> "de.blinkt.openvpn"
+                else -> "com.wireguard.android" // Default WireGuard
+            }
+        }
+
         saveButton.setOnClickListener {
             if (minWipeTries.text.toString().isBlank() || minPasswordLength.text.toString()
                     .isBlank() || minCaps.text.toString().isBlank() || minLower.text.toString()
@@ -151,7 +170,7 @@ class Misc : AppCompatActivity() {
             ) {
                 Toast.makeText(this, "Text Field Can't be empty", Toast.LENGTH_LONG).show()
             } else {
-                runBlocking {
+                lifecycleScope.launch {
                     val miscPrefManager = MiscPrefManager(this@Misc)
                     miscPrefManager.writeEnabled(
                         "wipe_retries", minWipeTries.text.toString().toInt()
@@ -180,10 +199,10 @@ class Misc : AppCompatActivity() {
                             "vpn_always", 1
                         )
                         miscPrefManager.writeEnabled(
-                            "vpn_lockdown", 1
+                            "vpn_lockdown", 1 // This will be overwritten if vpnLockdown.isChecked is true
                         )
                     }
-                    if (vpnLockdown.isClickable && vpnLockdown.isChecked) {
+                    if (vpnLockdown.isClickable && vpnLockdown.isChecked) { // Check isClickable first for safety, though isChecked is sufficient here
                         miscPrefManager.writeEnabled(
                             "vpn_lockdown", 2
                         )
@@ -194,11 +213,6 @@ class Misc : AppCompatActivity() {
                     }else{
                         miscPrefManager.writeEnabled("block_vpn_uninstall",1)
                     }
-//                    if(disableFingerPrint.isChecked){
-//                        miscPrefManager.writeEnabled("disable_finger",2)
-//                    }else{
-//                        miscPrefManager.writeEnabled("disable_finger",1)
-//                    }
 
                     Log.d(TAG, "Saving vpnPackageName ${getVpnPackageName(vpnPackageName)}")
                     miscPrefManager.writeEnabled(
@@ -216,27 +230,10 @@ class Misc : AppCompatActivity() {
                             else -> 0 // Default is WireGuard
                         }
                     )
+                    Log.d(TAG, "All DataStore writes initiated.") // Log after all writes are started
                 }
+                Toast.makeText(this, "Saved Settings", Toast.LENGTH_SHORT).show()
             }
-            Toast.makeText(this, "Saved Settings", Toast.LENGTH_SHORT).show()
         }
     }
-
-    fun getVpnPackageName(humanReadableName : String): String {
-        return when(humanReadableName) {
-            "Wireguard" -> "com.wireguard.android"
-            "Mullvad" -> "net.mullvad.mullvadvpn"
-            "NordVPN" -> "com.nordvpn.android"
-            "SurfShark" -> "com.surfshark.vpnclient.android"
-            "Cyber Ghost" -> "de.mobileconcepts.cyberghost"
-            "Proton" -> "ch.protonvpn.android"
-            "IP Vanish" -> "com.ixolit.ipvanish"
-            "StrongVPN" -> "com.strongvpn"
-            "Windscribe" -> "com.windscribe.vpn"
-            "ExpressVPN" -> "com.expressvpn.vpn"
-            "OpenVPN" -> "de.blinkt.openvpn"
-            else -> "com.wireguard.android" // Default WireGuard
-        }
-    }
-
 }

@@ -8,32 +8,28 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 
 val Context.miscData : DataStore<Preferences> by preferencesDataStore(name = "misc")
 
 class MiscPrefManager(context: Context) {
-    private var miscFlowRead : Flow<Preferences> = context.miscData.data
-    private var miscFlowWrite = context.miscData
-    suspend fun readEnabled(miscName : String) : Int?{
-        Log.i("MiscItem", "entered readEnabled")
+    private val dataStore: DataStore<Preferences> = context.miscData
+    suspend fun readEnabled(miscName: String): Int {
+        Log.i("MiscItem", "entered readEnabled for $miscName")
         val miscKey = intPreferencesKey(miscName)
-        var retval : Int = 0
-        miscFlowWrite.edit {
-                pref ->
-            retval = pref[miscKey] ?: 0
-        }
-//        Log.i("MiscItem", "in readEnabled " + retval.toString() + " "+ miscName.toString())
-        return retval
+        val value = dataStore.data.map { preferences ->
+            preferences[miscKey] ?: 0 // Provide a default value
+        }.first() // Collect the first emitted value and then cancel the flow
+        Log.i("MiscItem", "in readEnabled $value $miscName")
+        return value
     }
     // 0-> not set 1-> enabled 2-> disabled
-    suspend fun writeEnabled(miscName: String,enabled : Int) {
+    suspend fun writeEnabled(miscName: String, enabled: Int) {
         val miscKey = intPreferencesKey(miscName)
-        miscFlowWrite.edit {
-                pref->
-            pref[miscKey] = enabled
-            Log.i("MiscItem",miscName + " " + pref[miscKey].toString() + " Intended : " + enabled.toString())
+        dataStore.edit { preferences ->
+            preferences[miscKey] = enabled
+            Log.i("MiscItem", "$miscName ${preferences[miscKey]} Intended : $enabled")
         }
     }
-    
-    
 }

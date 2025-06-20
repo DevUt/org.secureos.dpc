@@ -1,6 +1,7 @@
 package org.sos.asp.misc
 
 import android.content.Context
+import android.util.Log
 import kotlinx.coroutines.runBlocking
 
 class MiscData(context: Context) {
@@ -8,6 +9,9 @@ class MiscData(context: Context) {
 
     fun enforceDefaults(){
         runBlocking {
+            val alreadyEnforced = miscPrefManager.readEnabled("misc_default_enforced")
+            if(alreadyEnforced == 2) return@runBlocking;
+            Log.i("MiscData", "Enforcing misc defaults")
             miscPrefManager.writeEnabled("wipe_retries",7)
             miscPrefManager.writeEnabled("min_length",18)
             miscPrefManager.writeEnabled("min_uppercase",4)
@@ -17,7 +21,7 @@ class MiscData(context: Context) {
             miscPrefManager.writeEnabled("vpn_always",2)
             miscPrefManager.writeEnabled("vpn_lockdown",2)
             miscPrefManager.writeEnabled("block_vpn_uninstall",2)
-            miscPrefManager.writeEnabled("disable_finger",2)
+            miscPrefManager.writeEnabled("misc_default_enforced",2)
         }
     }
 }
