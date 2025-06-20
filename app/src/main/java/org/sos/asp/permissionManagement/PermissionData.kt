@@ -5,11 +5,12 @@ import android.os.UserManager
 import kotlinx.coroutines.runBlocking
 
 class PermissionData(val context: Context){
-    val permissionList = mutableListOf<Pair<String,Int>>()
+    private val permissionList = mutableListOf<Pair<String,Int>>()
 
     fun populateData() : PermissionData{
         permissionList.add(Pair(UserManager.DISALLOW_BLUETOOTH,2))
         permissionList.add(Pair(UserManager.DISALLOW_BLUETOOTH_SHARING,2))
+        permissionList.add(Pair(UserManager.DISALLOW_CONFIG_BLUETOOTH,2))
         permissionList.add(Pair(UserManager.DISALLOW_SHARE_LOCATION,2))
         permissionList.add(Pair(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES,2))
         permissionList.add(Pair(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY,2))
@@ -18,7 +19,6 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_OUTGOING_CALLS,2))
         permissionList.add(Pair(UserManager.DISALLOW_OUTGOING_BEAM,2))
         permissionList.add(Pair(UserManager.DISALLOW_USB_FILE_TRANSFER,2))
-        permissionList.add(Pair(UserManager.DISALLOW_CONFIG_BLUETOOTH,2))
         permissionList.add(Pair(UserManager.DISALLOW_NETWORK_RESET,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_TETHERING,2))
         permissionList.add(Pair(UserManager.DISALLOW_SMS,2))
