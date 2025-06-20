@@ -44,7 +44,7 @@ class PermissionData(val context: Context){
         permissionList.add(Pair(UserManager.DISALLOW_MOUNT_PHYSICAL_MEDIA,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONTENT_SUGGESTIONS,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_SCREEN_TIMEOUT,2))
-        permissionList.add(Pair(UserManager.DISALLOW_AMBIENT_DISPLAY,2))
+        permissionList.add(Pair(UserManager.DISALLOW_AMBIENT_DISPLAY,1))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_VPN,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_DATE_TIME,2))
 
