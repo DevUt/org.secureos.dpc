@@ -214,10 +214,8 @@ class DeviceAdmin : DeviceAdminReceiver() {
         val alwaysVpn = miscPrefManager.readEnabled("vpn_always") == 2
         val blockVpn = miscPrefManager.readEnabled("block_vpn_uninstall") == 2
         if (alwaysVpn or blockVpn) {
-            runBlocking {
-                val packageD = PackageData(context, PackageManager.MATCH_DISABLED_COMPONENTS, true)
-                packageD.returnData()
-            }
+            val packageD = PackageData(context, PackageManager.MATCH_DISABLED_COMPONENTS, true)
+            packageD.returnData()
             val packagePrefManager = PackagePrefManager(context)
             if (packagePrefManager.readEnabled(vpnPackageName) == 1) {
                 if(alwaysVpn){

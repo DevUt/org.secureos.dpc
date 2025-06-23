@@ -57,6 +57,7 @@ class PackageData(
             packageObj.writeEnabled("com.android.talkback", 2)
             packageObj.writeEnabled("com.android.cellbroadcastreceiver.module", 2)
             packageObj.writeEnabled("com.android.cellbroadcastservice", 2)
+            packageObj.writeEnabled("com.android.server.devicelock.DeviceLockService", 1)
             packageObj.writeEnabled(
                 "com.android.providers.telephony",
                 1
@@ -73,7 +74,8 @@ class PackageData(
             "com.android.captiveportallogin",
             "com.android.providers.telephony",
             "org.sos.asp",
-            "com.android.phone"
+            "com.android.phone",
+            "com.android.server.devicelock.DeviceLockService"
         )
     }
 
