@@ -43,6 +43,7 @@ class ItemAdapter(
             holder.disableCheck.isClickable = false
             return
         }
+
         holder.disableCheck.isClickable = true
         holder.disableCheck.isChecked = item.enabled
         // 0-> not set 1-> enabled 2-> disabled
@@ -52,7 +53,8 @@ class ItemAdapter(
                 Log.i(TAG, item.packageName + " " + itemRead.toString())
             if (itemRead == 0 || itemRead == null) {
                 holder.disableCheck.isChecked = !item.enabled
-            } else holder.disableCheck.isChecked = itemRead == 2
+            } else {holder.disableCheck.isChecked = itemRead == 2
+            if(itemRead == 2) Log.i(TAG, "Checked: " + item.packageName )}
         }
         // 0-> not set 1-> enabled 2-> disabled
         holder.disableCheck.setOnClickListener {

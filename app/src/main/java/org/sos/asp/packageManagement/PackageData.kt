@@ -58,6 +58,7 @@ class PackageData(
             packageObj.writeEnabled("com.android.cellbroadcastreceiver.module", 2)
             packageObj.writeEnabled("com.android.cellbroadcastservice", 2)
             packageObj.writeEnabled("com.android.server.devicelock.DeviceLockService", 1)
+            packageObj.writeEnabled("com.android.devicelockcontroller",1)
             packageObj.writeEnabled(
                 "com.android.providers.telephony",
                 1
@@ -75,7 +76,8 @@ class PackageData(
             "com.android.providers.telephony",
             "org.sos.asp",
             "com.android.phone",
-            "com.android.server.devicelock.DeviceLockService"
+            "com.android.server.devicelock.DeviceLockService",
+            "com.android.devicelockcontroller"
         )
     }
 
