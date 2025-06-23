@@ -9,8 +9,8 @@ class PermissionData(val context: Context){
 
     fun populateData() : PermissionData{
         permissionList.add(Pair(UserManager.DISALLOW_BLUETOOTH,2))
-        permissionList.add(Pair(UserManager.DISALLOW_BLUETOOTH_SHARING,2))
         permissionList.add(Pair(UserManager.DISALLOW_CONFIG_BLUETOOTH,2))
+        permissionList.add(Pair(UserManager.DISALLOW_BLUETOOTH_SHARING,2))
         permissionList.add(Pair(UserManager.DISALLOW_SHARE_LOCATION,2))
         permissionList.add(Pair(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES,2))
         permissionList.add(Pair(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES_GLOBALLY,2))
